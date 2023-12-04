@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,StatusBar } from "react-native";
 import React from "react";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -14,15 +15,16 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar />
       <Tab.Navigator
         screenOptions={{
           tabBarShowLabel: true,
           tabBarActiveBackgroundColor: "red",
-          tabBarInactiveBackgroundColor: "grey",
-          tabBarActiveTintColor: "black",
+          tabBarInactiveBackgroundColor: "white",
+          tabBarActiveTintColor: "white",
           tabBarInactiveTintColor: "black",
           tabBarLabelStyle: { fontSize: 16 },
-          
+          headerShown: false,
           headerTitleStyle: {display:'none', margin:0, padding: 0}
         }}
       >

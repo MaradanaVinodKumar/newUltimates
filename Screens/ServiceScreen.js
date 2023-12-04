@@ -1,102 +1,146 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { Avatar, Button, Card } from "react-native-paper";
-import service1 from "../assets/service1.jpg";
-
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
+import service1 from "../assets/our-service1.jpeg";
+import service2 from "../assets/our-service2.jpeg";
+import service3 from "../assets/our-service3.webp";
+import service4 from "../assets/gutters.jpeg";
+import service5 from "../assets/windows.jpeg";
+import Header from "./Header";
 
 export default function ServiceScreen() {
   return (
-    <ScrollView style={styles.viewStyle}>
-      <Card style={styles.cardBox}>
-        <Card.Title
-          title="Card Title"
-          subtitle="Card Subtitle"
-          left={LeftContent}
-        />
-        <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
-          <Text variant="bodyMedium">Card content</Text>
-        </Card.Content>
-        <Card.Cover source={service1} style={styles.img} />
-        <Card.Actions></Card.Actions>
-      </Card>
-
-      <Card style={styles.cardBox}>
-        <Card.Title
-          title="Card Title"
-          subtitle="Card Subtitle"
-          left={LeftContent}
-        />
-        <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
-          <Text variant="bodyMedium">Card content</Text>
-        </Card.Content>
-        <Card.Cover
-          source={{
-            uri: "https://www.pexels.com/photo/engineers-looking-at-blueprint-3862135/",
+    <>
+      <Header />
+      <ScrollView style={styles.viewStyle}>
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: "bold",
+            marginHorizontal: "8%",
+            textAlign: "center",
           }}
-          style={styles.img}
-        />
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
-      </Card>
+        >
+          WHAT WE DO
+        </Text>
+        <Text
+          style={{ fontSize: 15, marginHorizontal: "8%", marginVertical: "2%" }}
+        >
+          Atlas Roofing and Siding offers a full range of services including the
+          installation of new roofs, roof maintenance, roof repairs, and
+          re-roofing services for both Residential and Commercial projects
+          including homes, offices, warehouses, and multi-family dwellings.
+        </Text>
+        <Text
+          style={{ fontSize: 15, marginHorizontal: "8%", marginVertical: "1%" }}
+        >
+          Since our start in 2003, our customers have come to know our
+          knowledgeable and professional service. Atlas Roofing and Siding is
+          your premier{" "}
+        </Text>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center", // Centers vertically
+            alignItems: "center",
+            marginTop: 50, // Centers horizontally
+          }}
+        >
+          <Image source={service1} style={styles.ourImage} />
+        </View>
 
-      <Card style={styles.cardBox}>
-        <Card.Title
-          title="Card Title"
-          subtitle="Card Subtitle"
-          left={LeftContent}
-        />
-        <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
-          <Text variant="bodyMedium">Card content</Text>
-        </Card.Content>
-        <Card.Cover
-          source={{ uri: "https://picsum.photos/700" }}
-          style={styles.img}
-        />
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
-      </Card>
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>RESIDENTIAL ROOFING</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center", // Centers vertically
+            alignItems: "center",
+            marginTop: 50, // Centers horizontally
+          }}
+        >
+          <Image source={service2} style={styles.ourImage} />
+        </View>
 
-      <Card style={styles.cardBox}>
-        <Card.Title
-          title="Card Title"
-          subtitle="Card Subtitle"
-          left={LeftContent}
-        />
-        <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
-          <Text variant="bodyMedium">Card content</Text>
-        </Card.Content>
-        <Card.Cover
-          source={{ uri: "https://picsum.photos/700" }}
-          style={styles.img}
-        />
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
-      </Card>
-    </ScrollView>
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>COMMERCIAL ROOFING</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center", // Centers vertically
+            alignItems: "center",
+            marginTop: 50, // Centers horizontally
+          }}
+        >
+          <Image source={service3} style={styles.ourImage} />
+        </View>
+
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>SIDING INSTALLATION</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center", // Centers vertically
+            alignItems: "center",
+            marginTop: 50, // Centers horizontally
+          }}
+        >
+          <Image source={service4} style={styles.ourImage} />
+        </View>
+
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>GUTTERS</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center", // Centers vertically
+            alignItems: "center",
+            marginTop: 50, // Centers horizontally
+          }}
+        >
+          <Image source={service5} style={styles.ourImage} />
+        </View>
+
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>WINDOWS</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </>
   );
 }
 const styles = StyleSheet.create({
-  cardBox: {
-    margin: 10,
-  },
   img: {
     padding: 10,
   },
-  view: {
-    height: "auto",
 
-    backgroundColor: "red",
-  },
   viewStyle: { flex: 1 },
+  ourImage: {
+    width: "90%",
+    height: "23%",
+    paddingVertical: "35%",
+  },
+  buttonContainer: {
+    backgroundColor: "red",
+    width: "90%",
+    padding: 6,
+
+    alignItems: "center",
+    marginHorizontal: "5%",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
