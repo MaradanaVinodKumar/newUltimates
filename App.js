@@ -1,20 +1,78 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-export default function App() {
+import Icon from "@expo/vector-icons/Ionicons";
+import HomeScreen from "./Screens/HomeScreen";
+import AboutScreen from "./Screens/AboutScreen";
+import ServiceScreen from "./Screens/ServiceScreen";
+import SettingsScreen from "./Screens/SettingsScreen";
+import InfoScreen from "./Screens/InfoScreen";
+
+const Tab = createBottomTabNavigator();
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: true,
+          tabBarActiveBackgroundColor: "red",
+          tabBarInactiveBackgroundColor: "grey",
+          tabBarActiveTintColor: "black",
+          tabBarInactiveTintColor: "black",
+          tabBarLabelStyle: { fontSize: 16 },
+          
+          headerTitleStyle: {display:'none', margin:0, padding: 0}
+        }}
+      >
+        <Tab.Screen
+          name="Home"
+          style={{fontSize: 36}}
+          component={HomeScreen}
+          options={{
+            tabBarIcon: () => (
+              <Icon name="home-sharp" size={25} color="black" />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="About"
+          component={AboutScreen}
+          options={{
+            tabBarIcon: () => <Icon name="rocket" size={25} color="black" />,
+          }}
+        />
+        <Tab.Screen
+          name="Services"
+          component={ServiceScreen}
+          options={{
+            tabBarIcon: () => <Icon name="briefcase-sharp" size={25} color="black" />,
+          }}
+        />
+        <Tab.Screen
+          name=" Settings"
+          component={SettingsScreen}
+          options={{
+            tabBarIcon: () => (
+              <Icon name="md-settings-sharp" size={25} color="black" />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Info"
+          component={InfoScreen}
+          options={{
+            tabBarIcon: () => (
+              <Icon name="information-circle-sharp" size={25} color="black" />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
+const styles = StyleSheet.create({});
