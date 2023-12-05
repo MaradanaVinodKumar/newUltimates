@@ -20,6 +20,8 @@ import ourService3 from "../assets/our-service3.webp";
 import Welcome from "../Components/Welcome";
 import PromiseText from "../Components/PromiseText";
 import { useNavigation } from "@react-navigation/native";
+import Cards1 from "./Cards1";
+import MyCarousel from "./MyCarousel";
 
 // import { Platform } from "react-native";
 // import { useNavigation } from "@react-navigation/native";
@@ -27,7 +29,6 @@ import { useNavigation } from "@react-navigation/native";
 export default function HomePage() {
   const navigation = useNavigation();
 
- 
   const sample = require("../assets/video1.mp4");
   // const videoRef = useRef(null);
   // const navigation = useNavigation();
@@ -109,7 +110,6 @@ export default function HomePage() {
             </View>
           </View>
         </SafeAreaView>
-
         <FlipCard
           style={styles.card}
           friction={6}
@@ -134,7 +134,6 @@ export default function HomePage() {
             </Text>
           </View>
         </FlipCard>
-
         <FlipCard
           style={styles.card}
           friction={6}
@@ -180,7 +179,6 @@ export default function HomePage() {
             </Text>
           </View>
         </FlipCard>
-
         <View style={{ height: 50 }}></View>
         <Text style={{ fontSize: 25, fontWeight: "bold", textAlign: "center" }}>
           OUR SERVICES
@@ -309,13 +307,22 @@ export default function HomePage() {
             marginTop: 40,
           }}
         >
-          <Text style={styles.buttonText} onPress={() => { navigation.navigate("Services"); }}>
+          <Text
+            style={styles.buttonText}
+            onPress={() => {
+              navigation.navigate("Services");
+            }}
+          >
             VIEW ALL SERVICES
           </Text>
         </TouchableOpacity>
         <Welcome />
+
+        <Cards1 />
+        <MyCarousel />
         <PromiseText />
       </ScrollView>
+      <ScrollView></ScrollView>
     </>
   );
 }
