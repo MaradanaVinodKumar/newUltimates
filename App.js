@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View,StatusBar } from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Icon from "@expo/vector-icons/Ionicons";
-import HomeScreen from "./Screens/HomeScreen";
-import AboutScreen from "./Screens/AboutScreen";
-import ServiceScreen from "./Screens/ServiceScreen";
-import SettingsScreen from "./Screens/SettingsScreen";
-import InfoScreen from "./Screens/InfoScreen";
+import HomeScreen from "./Screens/HomePage";
+import AboutScreen from "./Screens/AboutPage";
+import ServiceScreen from "./Screens/ServicePage";
+import SettingsScreen from "./Screens/SettingsPage";
+import InfoScreen from "./Screens/InfoPage";
 
 const Tab = createBottomTabNavigator();
 const App = () => {
@@ -20,17 +20,24 @@ const App = () => {
         screenOptions={{
           tabBarShowLabel: true,
           tabBarActiveBackgroundColor: "red",
-          tabBarInactiveBackgroundColor: "white",
+          headerShown: false,
+
           tabBarActiveTintColor: "white",
           tabBarInactiveTintColor: "black",
-          tabBarLabelStyle: { fontSize: 16 },
-          headerShown: false,
-          headerTitleStyle: {display:'none', margin:0, padding: 0}
+          tabBarLabelStyle: { fontSize: 14, padding: "2%" },
+          tabBarItemStyle: { borderRadius: 100 },
+          // tabBarItemStyle: { borderRadius: 100 ,  borderBottomLeftRadius: 100, // Adjust the values based on your preference
+          // borderBottomRightRadius: 80,},
+          // tabBarStyle: {
+          //   borderTopLeftRadius: 40, // Adjust the values based on your preference
+          //   borderTopRightRadius: 40,
+          //   backgroundColor: 'green', // Set the background color of the bottom tab bar
+          // },
         }}
       >
         <Tab.Screen
           name="Home"
-          style={{fontSize: 36}}
+          style={{ fontSize: 36 }}
           component={HomeScreen}
           options={{
             tabBarIcon: () => (
@@ -49,7 +56,9 @@ const App = () => {
           name="Services"
           component={ServiceScreen}
           options={{
-            tabBarIcon: () => <Icon name="briefcase-sharp" size={25} color="black" />,
+            tabBarIcon: () => (
+              <Icon name="briefcase-sharp" size={25} color="black" />
+            ),
           }}
         />
         <Tab.Screen
