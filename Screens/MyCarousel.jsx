@@ -1,13 +1,13 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ViewPropTypes } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
 
 export default function MyCarousel() {
   const images = [
-    require("../assets/icon.png"),
-    require("../assets/cf.png"),
-    require("../assets/diamond.png"),
-    require("../assets/eye.png"),
+    require("../assets/c1.jpeg"),
+    require("../assets/c2.jpeg"),
+    require("../assets/c3.jpeg"),
+    require("../assets/c4.jpeg"),
   ];
 
   return (
@@ -15,11 +15,11 @@ export default function MyCarousel() {
       <SliderBox
         images={images}
         sliderBoxHeight={200}
-        sliderBoxWidth={150}
         dotColor="red"
-        inactiveDotColor="#90A4AE"
-        paginationBoxVerticalPadding={20}
+        inactiveDotColor="black"
+        paginationBoxVerticalPadding={10}
         autoplay
+        autoplayInterval={1500}
         circleLoop
       />
     </View>

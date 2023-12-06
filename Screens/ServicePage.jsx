@@ -7,18 +7,30 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { Avatar, Button, Card } from "react-native-paper";
+import { MaterialIcons } from "@expo/vector-icons";
 import service1 from "../assets/our-service1.jpeg";
 import service2 from "../assets/our-service2.jpeg";
 import service3 from "../assets/our-service3.webp";
 import service4 from "../assets/gutters.jpeg";
 import service5 from "../assets/windows.jpeg";
-import Header from "./Header";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ServicePage() {
+  const navigation = useNavigation();
   return (
     <>
-      <Header />
+      <View style={styles.sidePoint}>
+        <TouchableOpacity>
+          <MaterialIcons
+            name="request-quote"
+            size={34}
+            color="white"
+            onPress={() => {
+              navigation.navigate("quote");
+            }}
+          />
+        </TouchableOpacity>
+      </View>
       <ScrollView style={styles.viewStyle}>
         <Text
           style={{
@@ -150,5 +162,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  sidePoint: {
+    height: 60,
+    width: 50,
+    backgroundColor: "black",
+    top: 380,
+    right: 0,
+    position: "absolute",
+    zIndex: 1,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+    padding: 11,
   },
 });

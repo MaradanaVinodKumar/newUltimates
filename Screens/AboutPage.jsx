@@ -1,12 +1,25 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import Header from "./Header";
+import { MaterialIcons } from "@expo/vector-icons";
 import who from "../assets/about1.jpeg";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AboutPage() {
+  const navigation = useNavigation();
   return (
     <>
-      <Header />
+      <View style={styles.sidePoint}>
+        <TouchableOpacity>
+          <MaterialIcons
+            name="request-quote"
+            size={34}
+            color="white"
+            onPress={() => {
+              navigation.navigate("quote");
+            }}
+          />
+        </TouchableOpacity>
+      </View>
       <View
         style={{
           marginTop: 20,
@@ -44,5 +57,17 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "23%",
     paddingVertical: "35%",
+  },
+  sidePoint: {
+    height: 60,
+    width: 50,
+    backgroundColor: "black",
+    top: 380,
+    right: 0,
+    position: "absolute",
+    zIndex: 1,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+    padding: 11,
   },
 });

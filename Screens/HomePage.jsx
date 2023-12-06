@@ -8,12 +8,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import FlipCard from "react-native-flip-card";
+
 import { Video } from "expo-av";
-import Header from "./Header";
-import vision from "../assets/eye.png";
-import mission from "../assets/target.png";
-import value from "../assets/diamond.png";
+
+import { MaterialIcons } from "@expo/vector-icons";
 import ourService1 from "../assets/our-service1.jpeg";
 import ourService2 from "../assets/our-service2.jpeg";
 import ourService3 from "../assets/our-service3.webp";
@@ -21,6 +19,7 @@ import Welcome from "../Components/Welcome";
 import PromiseText from "../Components/PromiseText";
 import { useNavigation } from "@react-navigation/native";
 import Cards1 from "./Cards1";
+import Cards2 from "./Cards2";
 import MyCarousel from "./MyCarousel";
 
 // import { Platform } from "react-native";
@@ -29,7 +28,7 @@ import MyCarousel from "./MyCarousel";
 export default function HomePage() {
   const navigation = useNavigation();
 
-  const sample = require("../assets/video1.mp4");
+  const sample = require("../assets/video2.gif");
   // const videoRef = useRef(null);
   // const navigation = useNavigation();
 
@@ -72,21 +71,23 @@ export default function HomePage() {
   // };
   return (
     <>
-      <Header />
+      <View style={styles.sidePoint}>
+        <TouchableOpacity>
+          <MaterialIcons
+            name="request-quote"
+            size={34}
+            color="white"
+            onPress={() => {
+              navigation.navigate("quote");
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+
       <ScrollView>
         <SafeAreaView>
           <View>
-            <Video
-              // ref={videoRef}
-              source={sample}
-              isMuted={true}
-              resizeMode="cover"
-              shouldPlay={true}
-              isLooping={true}
-              useNativeControls={false}
-              style={styles.backgroundVideoContainer}
-            />
-
+            <Image source={sample} style={styles.backgroundVideoContainer} />
             <View style={styles.overlay}>
               <Text style={styles.overlayText}>
                 ATLAS ROOFING & SIDING{"\n"}
@@ -110,75 +111,7 @@ export default function HomePage() {
             </View>
           </View>
         </SafeAreaView>
-        <FlipCard
-          style={styles.card}
-          friction={6}
-          perspective={1000}
-          flipHorizontal={true}
-          flipVertical={false}
-          flip={false}
-          clickable={true}
-        >
-          <View style={styles.view}>
-            <Image source={vision} style={styles.image} />
-            <Text style={{ fontSize: 20, color: "white", fontWeight: "900" }}>
-              OUR VISION
-            </Text>
-          </View>
-          <View style={styles.view_black}>
-            <Text style={styles.backText}>
-              Our vision is simple. We strive to over-deliver in every area that
-              we serve the Central Ohio market. This includes how we deal with
-              homeowners and the quality we deliver both in materials and
-              workmanship.{" "}
-            </Text>
-          </View>
-        </FlipCard>
-        <FlipCard
-          style={styles.card}
-          friction={6}
-          perspective={1000}
-          flipHorizontal={true}
-          flipVertical={false}
-          flip={false}
-          clickable={true}
-        >
-          <View style={styles.view_white}>
-            <Image source={mission} style={styles.image} />
-            <Text style={{ fontSize: 20, color: "black", fontWeight: "900" }}>
-              OUR MISSION
-            </Text>
-          </View>
-          <View style={styles.view_mission_black}>
-            <Text style={styles.backText}>
-              Provide our service in such a way to respect the homeowner the
-              same way as you would a close family member.{" "}
-            </Text>
-          </View>
-        </FlipCard>
-        <FlipCard
-          style={styles.card}
-          friction={6}
-          perspective={1000}
-          flipHorizontal={true}
-          flipVertical={false}
-          flip={false}
-          clickable={true}
-        >
-          <View style={styles.view}>
-            <Image source={value} style={styles.image} />
-            <Text style={{ fontSize: 20, color: "white", fontWeight: "900" }}>
-              OUR VALUE
-            </Text>
-          </View>
-          <View style={styles.view_black}>
-            <Text style={styles.backText}>
-              Value is not merely defined by price. Value is the combination of
-              competitive pricing coupled with superior quality and that’s the
-              value you can expect.
-            </Text>
-          </View>
-        </FlipCard>
+        <Cards1 />
         <View style={{ height: 50 }}></View>
         <Text style={{ fontSize: 25, fontWeight: "bold", textAlign: "center" }}>
           OUR SERVICES
@@ -317,12 +250,10 @@ export default function HomePage() {
           </Text>
         </TouchableOpacity>
         <Welcome />
-
-        <Cards1 />
+        <Cards2 />
         <MyCarousel />
         <PromiseText />
       </ScrollView>
-      <ScrollView></ScrollView>
     </>
   );
 }
@@ -330,7 +261,7 @@ export default function HomePage() {
 const styles = StyleSheet.create({
   backgroundVideoContainer: {
     flex: 1,
-    height: 715,
+    height: 450,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
@@ -452,4 +383,22 @@ const styles = StyleSheet.create({
     padding: "5%",
     backgroundColor: "rgba(30, 30, 42, 0.57)",
   },
+  sidePoint: {
+    height: 60,
+    width: 50,
+    backgroundColor: "black",
+    top: 380,
+    right: 0,
+    position: "absolute",
+    zIndex: 1,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+    padding: 11,
+  },
+  // rotateText: {
+  //   transform: [{ rotate: '0deg' }], // Adjust the angle as needed
+  //   fontSize: 10,
+  //    textAlignVertical: 'center',
+  //   fontWeight: '500',
+  // },
 });
