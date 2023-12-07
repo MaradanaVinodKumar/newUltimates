@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ViewPropTypes } from "react-native";
+import { View } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
 
 export default function MyCarousel() {

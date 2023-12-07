@@ -14,7 +14,7 @@ export default function SettingsPage() {
             size={34}
             color="white"
             onPress={() => {
-              navigation.navigate("Info");
+              navigation.navigate("quote");
             }}
           />
         </TouchableOpacity>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   sidePoint: {
     height: 60,
     width: 50,
-    backgroundColor: "red",
+    backgroundColor: "black",
     top: 380,
     right: 0,
     position: "absolute",

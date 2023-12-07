@@ -21,6 +21,8 @@ import Header from "./Screens/Header";
 import ServicePage from "./Screens/ServicePage";
 import AboutPage from "./Screens/AboutPage";
 import HomePage from "./Screens/HomePage";
+import SettingsPage from "./Screens/SettingsPage";
+import InfoPage from "./Screens/InfoPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -127,25 +129,67 @@ const App = () => {
               </Stack.Navigator>
             )}
           </Tab.Screen>
+          <Tab.Screen
+            name="Setting"
+            options={{
+              tabBarIcon: () => (
+                <Icon name="briefcase-sharp" size={25} color="black" />
+              ),
+            }}
+          >
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Settings"
+                  component={SettingsPage}
+                  options={{
+                    headerShown: false,
+                    tabBarIcon: () => (
+                      <Icon name="md-settings-sharp" size={25} color="black" />
+                    ),
+                  }}
+                />
+                <Stack.Screen
+                  name="quote"
+                  component={InstantQuote}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
 
           <Tab.Screen
-            name=" Settings"
-            component={SettingsScreen}
+            name="Infos"
             options={{
               tabBarIcon: () => (
-                <Icon name="md-settings-sharp" size={25} color="black" />
+                <Icon name="briefcase-sharp" size={25} color="black" />
               ),
             }}
-          />
-          <Tab.Screen
-            name="Info"
-            component={InfoScreen}
-            options={{
-              tabBarIcon: () => (
-                <Icon name="information-circle-sharp" size={25} color="black" />
-              ),
-            }}
-          />
+          >
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Info"
+                  component={InfoPage}
+                  options={{
+                    headerShown: false,
+                    tabBarIcon: () => (
+                      <Icon
+                        name="information-circle-sharp"
+                        size={25}
+                        color="black"
+                      />
+                    ),
+                  }}
+                />
+                <Stack.Screen
+                  name="quote"
+                  component={InstantQuote}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     </>
