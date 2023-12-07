@@ -159,7 +159,7 @@ const App = () => {
           </Tab.Screen>
 
           <Tab.Screen
-            name="Infos"
+            name="Info"
             options={{
               tabBarIcon: () => (
                 <Icon name="briefcase-sharp" size={25} color="black" />
@@ -169,7 +169,7 @@ const App = () => {
             {() => (
               <Stack.Navigator>
                 <Stack.Screen
-                  name="Info"
+                  name="Infos"
                   component={InfoPage}
                   options={{
                     headerShown: false,
