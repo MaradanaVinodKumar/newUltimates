@@ -31,17 +31,15 @@ export default function FAQ() {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.textAboveImage}>
-            Ultimates ROOFING & SIDING
-          </Text>
+        <View>
+          <Text style={styles.textAboveImage}>Ultimates ROOFING & SIDING</Text>
           <Text style={styles.textAboveImage2}>FAQ's</Text>
           <Image source={roof} style={styles.roof} />
         </View>
-        <View><Accordion/></View>
-          <View>
-          <Footer />
+        <View>
+          <Accordion />
         </View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

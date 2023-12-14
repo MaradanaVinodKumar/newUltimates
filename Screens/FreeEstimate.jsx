@@ -215,6 +215,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
+  label: {
+    color:'white'
+  },
   sidePoint: {
     height: 60,
     width: 50,
@@ -258,6 +261,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 16,
     marginVertical: 20,
+    backgroundColor: 'black',
+    paddingVertical:30
   },
   input: {
     height: 40,
@@ -265,6 +270,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 10,
+   
   },
   button: {
     backgroundColor: "red",
@@ -283,9 +289,11 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 14,
+    color:'white'
   },
   selectedTextStyle: {
     fontSize: 16,
+    color:'white'
   },
 
   inputSearchStyle: {

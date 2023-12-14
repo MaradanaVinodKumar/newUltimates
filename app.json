@@ -4,10 +4,10 @@
     "slug": "ultimates-roofing-solution-application",
     "version": "1.0.0",
     "orientation": "automatic",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/UltimatesLogo.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/UltimatesLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,13 +18,14 @@
       "supportsTablet": true
     },
     "android": {
+      "icon": "./assets/UltimatesLogo.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/UltimatesLogo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/UltimatesLogo.png"
     }
   }
 }

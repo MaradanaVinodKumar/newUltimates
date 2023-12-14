@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  Platform,
-} from "react-native";
+import { StyleSheet, Image, SafeAreaView, Platform } from "react-native";
 import React from "react";
-
+import logo from "../assets/UltimatesLogo.png";
 export default function Header() {
   return (
     <SafeAreaView style={styles.view}>
@@ -16,9 +9,9 @@ export default function Header() {
           justifyContent: "center",
           alignItems: "center",
           width: "50%",
-          height: "60%",
+          height: "100%",
         }}
-        source={require("../assets/atlaslogo.png")}
+        source={logo}
       />
     </SafeAreaView>
   );

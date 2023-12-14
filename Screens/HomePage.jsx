@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -28,6 +28,7 @@ import Agreements from "../Components/Agreements";
 // import { useNavigation } from "@react-navigation/native";
 
 export default function HomePage() {
+
   const navigation = useNavigation();
 
   const sample = require("../assets/final.gif");

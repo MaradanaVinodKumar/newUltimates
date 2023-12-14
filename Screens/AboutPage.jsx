@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity,SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import who from "../assets/AboutPageImages/about1.jpeg";
@@ -25,9 +32,7 @@ export default function AboutPage() {
       </View>
       <ScrollView>
         <View style={{ flex: 1 }}>
-          <Text style={styles.textAboveImage}>
-            Ultimates ROOFING & SIDING
-          </Text>
+          <Text style={styles.textAboveImage}>Ultimates ROOFING & SIDING</Text>
           <Text style={styles.textAboveImage2}>ABOUT US</Text>
           <Image source={roof} style={styles.roof} />
         </View>
