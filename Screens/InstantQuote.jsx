@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,58 +6,113 @@ import {
   TextInput,
   Dimensions,
   TouchableOpacity,
+  ActivityIndicator,
+  ScrollView,
+  Image,
+  SafeAreaView,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
+import axios from "axios";
+const KEY = "b182986efc1242b2a8c2709aa828fb67"; // Replace with your OpenCage API Key
 
 export default function InstantQuote() {
-  const [textInputValue, setTextInputValue] = useState("");
-  const [markerCoordinates, setMarkerCoordinates] = useState({
+  // const Card = ({ imageSource, title }) => (
+  //   <View style={styles.card}>
+  //     <Image source={imageSource} style={styles.image} />
+  //     <View style={styles.cardContent}>
+  //       {/* Add additional card content here, such as title */}
+  //     </View>
+  //   </View>
+  // );
+
+  const defaultRegion = {
     latitude: 16.757,
     longitude: 81.6922,
-  });
-
-  const initialRegion = {
-    latitude: markerCoordinates.latitude,
-    longitude: markerCoordinates.longitude,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
 
-  const handleSearchLocation = () => {
-    // You can implement your logic here to update the map based on the entered location
-    // For now, let's just set the marker to the initial Tanuku coordinates
-    setMarkerCoordinates({
-      latitude: 16.757,
-      longitude: 81.6922,
+  const [mapRegion, setMapRegion] = useState(defaultRegion);
+  const [textInputValue, setTextInputValue] = useState("");
+  const [markerCoordinates, setMarkerCoordinates] = useState({
+    latitude: defaultRegion.latitude,
+    longitude: defaultRegion.longitude,
+  });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Update the map region when marker coordinates change
+    setMapRegion({
+      latitude: markerCoordinates.latitude,
+      longitude: markerCoordinates.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
     });
+  }, [markerCoordinates]);
+
+  const handleSearchLocation = () => {
+    setLoading(true);
+
+    axios
+      .get(
+        `https://api.opencagedata.com/geocode/v1/json?q=${textInputValue}&key=${KEY}`
+      )
+      .then((response) => {
+        const firstResult = response.data.results[0];
+
+        if (firstResult) {
+          setMarkerCoordinates({
+            latitude: firstResult.geometry.lat,
+            longitude: firstResult.geometry.lng,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching geocoding data", error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
-    <>
-      <View style={styles.container}>
-        <MapView style={styles.map} initialRegion={initialRegion}>
-          <Marker
-            coordinate={markerCoordinates}
-            title="Selected Location"
-            description="Location based on entered text"
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <MapView style={styles.map} region={mapRegion}>
+            <Marker
+              coordinate={markerCoordinates}
+              title="Selected Location"
+              description="Location based on entered text"
+            />
+          </MapView>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter Location"
+            value={textInputValue}
+            onChangeText={(text) => setTextInputValue(text)}
           />
-        </MapView>
-      </View>
-      <View>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Location"
-          value={textInputValue}
-          onChangeText={(text) => setTextInputValue(text)}
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSearchLocation}
-        >
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableOpacity>
-      </View>
-    </>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleSearchLocation}
+            disabled={loading}
+          >
+            {loading ? (
+              <ActivityIndicator color="white" />
+            ) : (
+              <Text style={styles.buttonText}>Search</Text>
+            )}
+          </TouchableOpacity>
+        </View>
+        {/* <View style={styles.card_container}>
+        <Card imageSource={require("../assets/pricing.png")} title="Card 1" />
+        <Card imageSource={require("../assets/pricing.png")} title="Card 2" />
+        <Card imageSource={require("../assets/pricing.png")} title="Card 3" />
+      </View> */}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -65,28 +120,54 @@ const styles = StyleSheet.create({
   container: {
     height: 250,
   },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 26,
+    marginHorizontal: "10%",
+  },
   input: {
+    flex: 1,
     height: 40,
     borderColor: "black",
     borderWidth: 1,
-    marginTop: 26,
     padding: 8,
-    marginHorizontal: "10%",
+    marginRight: 10,
   },
   map: {
-    width: Dimensions.get("window").width,
+    width: "100%",
     height: 250,
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "red",
     padding: 10,
-    marginTop: 10,
-    marginHorizontal: "10%",
     alignItems: "center",
     borderRadius: 5,
   },
   buttonText: {
     color: "white",
     fontSize: 16,
+  },
+  card_container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 16,
+  },
+  card: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  image: {
+    width: "100%",
+    height: 100,
+
+    resizeMode: "cover",
+  },
+  cardContent: {
+    padding: 16,
   },
 });

@@ -1,19 +1,26 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  Platform,
+} from "react-native";
 import React from "react";
 
 export default function Header() {
   return (
-    <View style={styles.view}>
+    <SafeAreaView style={styles.view}>
       <Image
         style={{
           justifyContent: "center",
           alignItems: "center",
           width: "50%",
-          height: 40,
+          height: "60%",
         }}
         source={require("../assets/atlaslogo.png")}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -24,5 +31,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 65,
     backgroundColor: "white",
+    marginVertical: Platform.OS === "ios" ? 15 : 0,
   },
 });

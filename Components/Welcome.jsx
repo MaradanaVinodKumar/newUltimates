@@ -1,14 +1,46 @@
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { Animated } from "react-native";
 import welcome from "../assets/welcome1.jpeg";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Welcome() {
+  const FadeInView = (props) => {
+    const fadeAnim = useRef(new Animated.Value(10)).current; // Initial value for opacity: 0
+    const slideAnim = useRef(new Animated.Value(1000)).current; // Initial value for slide: 100
+
+    useEffect(() => {
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 10000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }, [fadeAnim, slideAnim]);
+
+    return (
+      <Animated.View
+        style={{
+          ...props.style,
+          opacity: fadeAnim,
+          transform: [{ translateX: slideAnim }],
+        }}
+      >
+        {props.children}
+      </Animated.View>
+    );
+  };
   const navigation = useNavigation();
   return (
     <>
       <View style={{ marginTop: 50 }}></View>
-      <View style={styles.container}>
+      <FadeInView style={styles.container}>
         {/* Background Image */}
         <Image
           source={welcome} // Update with your image URL
@@ -19,20 +51,20 @@ export default function Welcome() {
         <View style={styles.overlay}>
           {/* Text */}
           <Text style={styles.heading}>WELCOME TO -----------</Text>
-          <Text style={styles.text}>ATLAS ROOFING & SIDING</Text>
+          <Text style={styles.text}>Ultimates ROOFING & SIDING</Text>
           <Text style={styles.redText}>
             A Long History of Roofing Excellenece
           </Text>
           <Text style={styles.para}>
-            Atlas Roofing and Siding offers a full range of services including
-            the installation of new roofs, roof maintenance, roof repairs, and
-            re-roofing services for both Residential and Commercial projects
-            including homes, offices, warehouses, and multi-family dwellings.
-            Since our start in 2003, our customers have come to know our
-            knowledgeable and professional service.
+            Ultimates Roofing and Siding offers a full range of services
+            including the installation of new roofs, roof maintenance, roof
+            repairs, and re-roofing services for both Residential and Commercial
+            projects including homes, offices, warehouses, and multi-family
+            dwellings. Since our start in 2003, our customers have come to know
+            our knowledgeable and professional service.
           </Text>
           <Text style={styles.para}>
-            Atlas Roofing and Siding is your premier Columbus roofer.
+            Ultimates Roofing and Siding is your premier Columbus roofer.
           </Text>
           <TouchableOpacity style={styles.buttonContainer}>
             <Text
@@ -45,7 +77,7 @@ export default function Welcome() {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </FadeInView>
     </>
   );
 }

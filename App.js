@@ -1,33 +1,30 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "@expo/vector-icons/Ionicons";
-import HomeScreen from "./Screens/HomePage";
-import AboutScreen from "./Screens/AboutPage";
-import ServiceScreen from "./Screens/ServicePage";
-import SettingsScreen from "./Screens/SettingsPage";
-import InfoScreen from "./Screens/InfoPage";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InstantQuote from "./Screens/InstantQuote";
 import Header from "./Screens/Header";
 import ServicePage from "./Screens/ServicePage";
 import AboutPage from "./Screens/AboutPage";
 import HomePage from "./Screens/HomePage";
-import SettingsPage from "./Screens/SettingsPage";
-import InfoPage from "./Screens/InfoPage";
+import ResidentialRoofing from "./Screens/Services/ResidentialRoofing";
+import CommercialRoofing from "./Screens/Services/CommercialRoofing";
+import SidingInstallation from "./Screens/Services/SidingInstallation";
+import Gutters from "./Screens/Services/Gutters";
+import Windows from "./Screens/Services/Windows";
+import FreeEstimate from "./Screens/FreeEstimate";
+import ContactPage from "./Screens/ContactPage";
+import FAQ from "./Screens/FAQ";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const App = () => {
+  // const navigation = useNavigation();
   return (
     <>
       <NavigationContainer>
@@ -37,7 +34,7 @@ const App = () => {
         <Tab.Navigator
           screenOptions={{
             tabBarShowLabel: true,
-            tabBarActiveBackgroundColor: "red",
+            tabBarActiveBackgroundColor: "crimson",
             headerShown: false,
             tabBarActiveTintColor: "white",
             tabBarInactiveTintColor: "black",
@@ -68,6 +65,46 @@ const App = () => {
                 <Stack.Screen
                   name="quote"
                   component={InstantQuote}
+                  options={{
+                    headerShown: false,
+                    // headerLeft: () => (
+                    //   <TouchableOpacity
+                    //     style={styles.backButton}
+                    //     onPress={() => navigation.navigate("HomeScreen")}
+                    //   >
+                    //     <Icon name="arrow-back" size={25} color="black" />
+                    //   </TouchableOpacity>
+                    // ),
+                  }}
+                />
+                <Stack.Screen
+                  name="Residential"
+                  component={ResidentialRoofing}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Commercial"
+                  component={CommercialRoofing}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Siding"
+                  component={SidingInstallation}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Gutters"
+                  component={Gutters}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Windows"
+                  component={Windows}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="FreeEstimate"
+                  component={FreeEstimate}
                   options={{ headerShown: false }}
                 />
               </Stack.Navigator>
@@ -126,26 +163,64 @@ const App = () => {
                   component={InstantQuote}
                   options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                  name="Residential"
+                  component={ResidentialRoofing}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Commercial"
+                  component={CommercialRoofing}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Siding"
+                  component={SidingInstallation}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Gutters"
+                  component={Gutters}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Windows"
+                  component={Windows}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="FreeEstimate"
+                  component={FreeEstimate}
+                  options={{ headerShown: false }}
+                />
               </Stack.Navigator>
             )}
           </Tab.Screen>
           <Tab.Screen
-            name="Setting"
+            name="Contact"
             options={{
               tabBarIcon: () => (
-                <Icon name="briefcase-sharp" size={25} color="black" />
+                <MaterialCommunityIcons
+                  name="contacts"
+                  size={24}
+                  color="black"
+                />
               ),
             }}
           >
             {() => (
               <Stack.Navigator>
                 <Stack.Screen
-                  name="Settings"
-                  component={SettingsPage}
+                  name="Contacts"
+                  component={ContactPage}
                   options={{
                     headerShown: false,
                     tabBarIcon: () => (
-                      <Icon name="md-settings-sharp" size={25} color="black" />
+                      <MaterialCommunityIcons
+                        name="contacts"
+                        size={24}
+                        color="black"
+                      />
                     ),
                   }}
                 />
@@ -159,10 +234,10 @@ const App = () => {
           </Tab.Screen>
 
           <Tab.Screen
-            name="Info"
+            name="FAQ's"
             options={{
               tabBarIcon: () => (
-                <Icon name="briefcase-sharp" size={25} color="black" />
+                <Icon name="information-circle" size={25} color="black" />
               ),
             }}
           >
@@ -170,7 +245,7 @@ const App = () => {
               <Stack.Navigator>
                 <Stack.Screen
                   name="Infos"
-                  component={InfoPage}
+                  component={FAQ}
                   options={{
                     headerShown: false,
                     tabBarIcon: () => (
@@ -210,5 +285,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderBottomLeftRadius: 30,
     padding: 11,
+  },
+  backButton: {
+    marginLeft: 10,
+    padding: 10,
   },
 });

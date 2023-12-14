@@ -12,15 +12,17 @@ import {
 import { Video } from "expo-av";
 
 import { MaterialIcons } from "@expo/vector-icons";
-import ourService1 from "../assets/our-service1.jpeg";
-import ourService2 from "../assets/our-service2.jpeg";
-import ourService3 from "../assets/our-service3.webp";
+import ourService1 from "../assets/ServicePageImages/our-service1.jpeg";
+import ourService2 from "../assets/ServicePageImages/our-service2.jpeg";
+import ourService3 from "../assets/ServicePageImages/our-service3.webp";
 import Welcome from "../Components/Welcome";
 import PromiseText from "../Components/PromiseText";
 import { useNavigation } from "@react-navigation/native";
-import Cards1 from "./Cards1";
-import Cards2 from "./Cards2";
-import MyCarousel from "./MyCarousel";
+import Cards1 from "../Components/Cards1";
+import Cards2 from "../Components/Cards2";
+import MyCarousel from "../Components/MyCarousel";
+import Footer from "../Components/Footer";
+import Agreements from "../Components/Agreements";
 
 // import { Platform } from "react-native";
 // import { useNavigation } from "@react-navigation/native";
@@ -28,10 +30,9 @@ import MyCarousel from "./MyCarousel";
 export default function HomePage() {
   const navigation = useNavigation();
 
-  const sample = require("../assets/video2.gif");
+  const sample = require("../assets/final.gif");
   // const videoRef = useRef(null);
   // const navigation = useNavigation();
-
   // useEffect(() => {
   //   const unsubscribe = navigation.addListener("beforeRemove", (e) => {
   //     // Pause or stop the video when navigating away
@@ -52,7 +53,7 @@ export default function HomePage() {
   //           videoRef.current.playAsync();
   //         }
   //       } catch (error) {
-  //         console.error("Error playing video:", error);
+  //         or("Error playing video:", error);
   //       }
   //     }
   //   };
@@ -70,7 +71,7 @@ export default function HomePage() {
   //   }
   // };
   return (
-    <>
+    <SafeAreaView>
       <View style={styles.sidePoint}>
         <TouchableOpacity>
           <MaterialIcons
@@ -90,21 +91,23 @@ export default function HomePage() {
             <Image source={sample} style={styles.backgroundVideoContainer} />
             <View style={styles.overlay}>
               <Text style={styles.overlayText}>
-                ATLAS ROOFING & SIDING{"\n"}
-                <Text style={{ fontSize: 20 }}>
-                  Roofing & Siding At Its Best
-                </Text>
+                Elevate Every Horizon With Our Roofing Expertise
               </Text>
+
+              <Text style={styles.sub_text}>
+                A symphony of strength resonating through every project
+              </Text>
+
               <TouchableOpacity
                 style={{
-                  backgroundColor: "red",
-                  width: "30%",
+                  backgroundColor: "black",
                   padding: 6,
-                  width: "75%",
+                  width: "50%",
                   alignItems: "center",
-                  marginVertical: "16%",
-                  marginTop: -18,
+                  justifyContent: "center",
+                  marginTop: 10,
                 }}
+                onPress={() => navigation.navigate("FreeEstimate")}
               >
                 <Text style={styles.buttonText}>GET A FREE ESTIMATE</Text>
               </TouchableOpacity>
@@ -128,7 +131,7 @@ export default function HomePage() {
           <Text
             style={{ color: "red", fontWeight: "bold", textAlign: "center" }}
           >
-            Atlas Roofing and Siding{" "}
+            Ultimates Roofing and Siding{" "}
             <Text
               style={{
                 color: "black",
@@ -166,10 +169,13 @@ export default function HomePage() {
             paddingHorizontal: "7%",
           }}
         >
-          Atlas Roofing &amp; Siding is your storm damage expert. When storms
-          strike and there’s hail damage, wind damage, and more..{" "}
+          Ultimates Roofing &amp; Siding is your storm damage expert. When
+          storms strike and there’s hail damage, wind damage, and more..{" "}
         </Text>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => navigation.navigate("Residential")}
+        >
           <Text style={styles.buttonText}>READ MORE</Text>
         </TouchableOpacity>
         <View
@@ -195,10 +201,14 @@ export default function HomePage() {
             paddingHorizontal: "7%",
           }}
         >
-          Atlas is proud to offer our customers products that have earned the
-          government’s ENERGY STAR label. Atlas ENERGY STAR qualified products.
+          Ultimates is proud to offer our customers products that have earned
+          the government’s ENERGY STAR label. Ultimates ENERGY STAR qualified
+          products.
         </Text>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => navigation.navigate("Commercial")}
+        >
           <Text style={styles.buttonText}>READ MORE</Text>
         </TouchableOpacity>
         <View
@@ -224,10 +234,13 @@ export default function HomePage() {
             paddingHorizontal: "7%",
           }}
         >
-          Atlas Roofing and Siding offers a complete line of high-quality siding
-          products including, Vinyl, James Hardie, and LP Smartside.
+          Ultimates Roofing and Siding offers a complete line of high-quality
+          siding products including, Vinyl, James Hardie, and LP Smartside.
         </Text>
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => navigation.navigate("Siding")}
+        >
           <Text style={styles.buttonText}>READ MORE</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -250,21 +263,25 @@ export default function HomePage() {
           </Text>
         </TouchableOpacity>
         <Welcome />
+
+        <PromiseText />
         <Cards2 />
         <MyCarousel />
-        <PromiseText />
+        <Agreements />
+        <Footer />
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   backgroundVideoContainer: {
     flex: 1,
-    height: 450,
+    height: Platform.OS === "ios" ? 480 : 450,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
+    resizeMode: "stretch",
   },
   view: {
     display: "flex",
@@ -326,7 +343,7 @@ const styles = StyleSheet.create({
     paddingVertical: "35%",
   },
   buttonContainer: {
-    backgroundColor: "red",
+    backgroundColor: "black",
     width: "30%",
     padding: 6,
     alignItems: "center",
@@ -343,18 +360,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  backgroundVideo: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the overlay color and opacity as needed
-    // Add any additional styling for the overlay view
-  },
+
   headerContainer: {
     padding: 16,
     backgroundColor: "transparent",
@@ -367,7 +373,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(255, 255, 255, 0)", // Set the desired transparency here
+    backgroundColor: "rgba(30, 30, 42, 0.57)", // Set the desired transparency here
     justifyContent: "center",
     alignItems: "center",
   },
@@ -375,13 +381,14 @@ const styles = StyleSheet.create({
     fontSize: 35,
     textAlign: "center",
     fontWeight: "bold",
-    color: "black", // Set the desired text color
-    borderColor: "red",
-    borderWidth: 5,
     color: "white",
-    marginHorizontal: "5%",
-    padding: "5%",
-    backgroundColor: "rgba(30, 30, 42, 0.57)",
+    width:'80%'
+  },
+  sub_text: {
+    fontSize: 20,
+    color: "white",
+    width: "70%",
+    textAlign: "center",
   },
   sidePoint: {
     height: 60,
