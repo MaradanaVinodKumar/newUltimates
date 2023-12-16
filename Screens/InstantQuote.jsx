@@ -16,14 +16,6 @@ import axios from "axios";
 const KEY = "b182986efc1242b2a8c2709aa828fb67"; // Replace with your OpenCage API Key
 
 export default function InstantQuote() {
-  // const Card = ({ imageSource, title }) => (
-  //   <View style={styles.card}>
-  //     <Image source={imageSource} style={styles.image} />
-  //     <View style={styles.cardContent}>
-  //       {/* Add additional card content here, such as title */}
-  //     </View>
-  //   </View>
-  // );
 
   const defaultRegion = {
     latitude: 16.757,

@@ -28,7 +28,6 @@ import Agreements from "../Components/Agreements";
 // import { useNavigation } from "@react-navigation/native";
 
 export default function HomePage() {
-
   const navigation = useNavigation();
 
   const sample = require("../assets/final.gif");
@@ -283,6 +282,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     resizeMode: "stretch",
+    width: "100%",
   },
   view: {
     display: "flex",
@@ -383,7 +383,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     color: "white",
-    width:'80%'
+    width: "80%",
   },
   sub_text: {
     fontSize: 20,

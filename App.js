@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <StatusBar />
+        <StatusBar color="black" />
         <Header />
 
         <Tab.Navigator

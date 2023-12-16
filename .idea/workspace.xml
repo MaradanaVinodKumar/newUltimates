@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0c7a2339-a311-4d14-a69c-4ddc3e32f85f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/AboutPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/AboutPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/FAQ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/FAQ.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/FreeEstimate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/FreeEstimate.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screens/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screens/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/UltimatesLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

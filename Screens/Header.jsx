@@ -8,7 +8,7 @@ export default function Header() {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          width: "50%",
+          width: "60%",
           height: "100%",
         }}
         source={logo}
