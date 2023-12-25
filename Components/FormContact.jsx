@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Image } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+import Icon from "@expo/vector-icons/Ionicons";
 
 export default function FormContact() {
   const data = [
@@ -37,36 +38,64 @@ export default function FormContact() {
   };
 
   return (
-    <ScrollView>
+    <ScrollView >
+
+      <View style={[styles.container, { flexDirection: 'row', }]}>
+        <View style={[styles.Contactbox, { marginRight: '4%' }]}>
+          <Text style={styles.ContactboxTitle}>
+            Call Us
+          </Text>
+          <Text style={styles.ContactboxText}>
+            <Icon name="call" size={12} color={'#B22335'} />
+            614-602-7980
+          </Text>
+        </View>
+        <View style={styles.Contactbox}>
+          <Text style={styles.ContactboxTitle}>
+
+            Locate Us
+          </Text>
+          <Text style={styles.ContactboxText}>
+            <Icon name="location" size={12} color={'#B22335'} />
+            Columbus, Ohio
+          </Text>
+        </View>
+      </View>
       <View style={styles.container}>
-        <Text>First Name *</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) => handleInputChange("firstName", text)}
-        />
+        <View ><Text style={styles.fomeHead}>Reach Out to Us</Text></View>
+        <View >
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={[styles.formLable, { width: '48%', marginRight: '4%' }]}>First Name *</Text>
+            <Text style={styles.formLable}>Last Name*</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput
+              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              onChangeText={(text) => handleInputChange("firstName", text)}
+            />
+            <TextInput
+              style={[styles.input, { width: '48%' }]}
+              onChangeText={(text) => handleInputChange("lastName", text)}
+            />
+          </View>
+        </View>
 
-        <Text>Last Name</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) => handleInputChange("lastName", text)}
-        />
-
-        <Text>Your Email Address *</Text>
+        <Text style={styles.formLable} >E-mail*</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => handleInputChange("gmail", text)}
         />
 
-        <Text>Your Phone Number *</Text>
+        <Text style={styles.formLable}>Phone Number*</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => handleInputChange("phoneNumber", text)}
           keyboardType="phone-pad"
         />
 
-        <Text>Service *</Text>
+        <Text style={styles.formLable}>Choose a Service *</Text>
         <Dropdown
-          style={styles.dropdown}
+          style={[styles.dropdown, {}]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
@@ -84,62 +113,79 @@ export default function FormContact() {
           }}
         />
 
-        <Text>Address *</Text>
+        <Text style={styles.formLable}>Address *</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => handleInputChange("address", text)}
         />
-
-        <Text>City *</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) => handleInputChange("city", text)}
-        />
-
-        <Text>State *</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) => handleInputChange("state", text)}
-        />
-
-        <Text>Zip *</Text>
+        <View >
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={[styles.formLable, { width: '48%', marginRight: '4%' }]}>City *</Text>
+            <Text style={styles.formLable}>State *</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput
+              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              onChangeText={(text) => handleInputChange("city", text)}
+            />
+            <TextInput
+              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              onChangeText={(text) => handleInputChange("state", text)}
+            />
+          </View>
+        </View>
+        <Text style={styles.formLable}>Zip *</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => handleInputChange("zip", text)}
           keyboardType="numeric"
         />
 
-        <Text>Message</Text>
+        <Text style={styles.formLable}>Message</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, { height: 88 }]}
           multiline
           numberOfLines={8}
           onChangeText={(text) => handleInputChange("message", text)}
-          placeholder="Please feel free to add as much information as you like"
-        />
+          placeholder="Please share detailed information about your project to help us understand better."
 
-        <Button title="Submit" onPress={handleSubmit} color={"crimson"} />
+        />
+        <View style={{ alignItems: 'center', }}>
+          <TouchableOpacity onPress={handleSubmit} style={styles.submitButton}>
+
+            <Text style={{ color: '#F9F9F9', fontSize: 14, fontWeight: '400' }}>Submit</Text>
+
+          </TouchableOpacity >
+        </View>
       </View>
+      <View style={{ marginBottom: 50 }}></View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 30,
   },
   input: {
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 30,
     padding: 5,
+    borderRadius: 2
   },
   dropdown: {
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 30,
+    padding: 6,
+    paddingBottom: 14,
+    paddingTop: 12,
+    paddingLeft: 10,
+
+
   },
   placeholderStyle: {
     fontSize: 14,
@@ -151,5 +197,50 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+
   },
+  fomeHead: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 50,
+    color: '#181818'
+  },
+  formLable: {
+    fontSize: 12,
+    fontWeight: '400',
+    marginBottom: 5,
+    color: '#181818'
+  },
+  submitButton: {
+    backgroundColor: '#B22335',
+    width: 175,
+    paddingHorizontal: 24,
+    paddingTop: 10,
+    paddingBottom: 13,
+    alignItems: 'center',
+    // marginBottom: 50
+  },
+  Contactbox: {
+    width: "48%",
+    height: 103,
+    backgroundColor: '#F5CCD1',
+    borderRadius: 4,
+    padding: 20,
+    paddingVertical: 20
+  },
+  ContactboxTitle: {
+    fontSize: 18,
+    fontWeight: '500',
+    letterSpacing: 0.36,
+    // marginBottom: 15
+    lineHeight: 50
+  }
+  , ContactboxText: {
+    fontSize: 14,
+    fontWeight: '400',
+    letterSpacing: 0.28,
+    color: '#323539'
+  }
 });
+

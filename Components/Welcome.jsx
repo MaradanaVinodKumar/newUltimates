@@ -1,7 +1,8 @@
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useRef, useEffect } from "react";
 import { Animated } from "react-native";
-import welcome from "../assets/welcome1.jpeg";
+import welcome from "../assets/WelcomeBackground.png";
+import welcomeHome from "../assets/welcomeHouse.png";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Welcome() {
@@ -43,28 +44,33 @@ export default function Welcome() {
       <FadeInView style={styles.container}>
         {/* Background Image */}
         <Image
-          source={welcome} // Update with your image URL
+          source={welcome} // Update with your image URL //1st updated by figma image
           style={styles.backgroundImage}
+        />
+        <Image
+          source={welcomeHome}
+          style={{ position: "absolute", bottom: 0, right: 0 }}
         />
 
         {/* Transparent White Background View */}
         <View style={styles.overlay}>
           {/* Text */}
-          <Text style={styles.heading}>WELCOME TO -----------</Text>
-          <Text style={styles.text}>Ultimates ROOFING & SIDING</Text>
-          <Text style={styles.redText}>
+
+          <Text style={styles.heading}>
+            Welcome to Ultimates{"\n"}Roofing, Where Excellence{"\n"}Meets
+            Innovation
+          </Text>
+          {/* <Text style={styles.redText}>
             A Long History of Roofing Excellenece
-          </Text>
+          </Text> */}
           <Text style={styles.para}>
-            Ultimates Roofing and Siding offers a full range of services
-            including the installation of new roofs, roof maintenance, roof
-            repairs, and re-roofing services for both Residential and Commercial
-            projects including homes, offices, warehouses, and multi-family
-            dwellings. Since our start in 2003, our customers have come to know
-            our knowledgeable and professional service.
-          </Text>
-          <Text style={styles.para}>
-            Ultimates Roofing and Siding is your premier Columbus roofer.
+            Ultimates Roofing LLC presents a comprehensive array of services,
+            encompassing new roof installations, meticulous roof maintenance,
+            expert roof repairs, and cutting-edge re-roofing solutions for
+            Residential and Commercial ventures. Our expertise extends to homes,
+            offices, warehouses, and multi-family dwellings. Over the years,
+            clients have recognized and valued the adept and professional
+            service synonymous with us.
           </Text>
           <TouchableOpacity style={styles.buttonContainer}>
             <Text
@@ -73,7 +79,7 @@ export default function Welcome() {
                 navigation.navigate("About");
               }}
             >
-              READ MORE
+              More About Us
             </Text>
           </TouchableOpacity>
         </View>
@@ -94,9 +100,9 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // Transparent white background (adjust the last value for transparency)
-    marginHorizontal: "7%",
-    marginVertical: "1%",
+    paddingHorizontal: "7%",
+    paddingVertical: "3%",
+    alignItems: "center",
   },
   text: {
     fontSize: 20,
@@ -107,28 +113,28 @@ const styles = StyleSheet.create({
     width: "50%",
   },
   heading: {
-    color: "red",
-    fontSize: 18,
-    fontWeight: "bold",
+    textAlign: "justify",
+    fontSize: 22,
+    fontWeight: "500",
     marginTop: 15,
-    marginHorizontal: "5%",
   },
   redText: {
-    color: "red",
+    color: "#B22335",
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 15,
     textAlign: "center",
   },
   para: {
-    fontSize: 16,
-    marginTop: 15,
+    fontSize: 18,
+    marginTop: 0,
     marginHorizontal: "6%",
+    color: "#323539",
   },
   buttonContainer: {
-    backgroundColor: "red",
-    width: "40%",
-    padding: 6,
+    backgroundColor: "#B22335",
+    width: "50%",
+    padding: 10,
 
     alignItems: "center",
     marginHorizontal: "6%",
