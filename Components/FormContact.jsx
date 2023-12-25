@@ -38,49 +38,49 @@ export default function FormContact() {
   };
 
   return (
-    <ScrollView >
-
-      <View style={[styles.container, { flexDirection: 'row', }]}>
-        <View style={[styles.Contactbox, { marginRight: '4%' }]}>
-          <Text style={styles.ContactboxTitle}>
-            Call Us
-          </Text>
+    <ScrollView>
+      <View style={[styles.container, { flexDirection: "row" }]}>
+        <View style={[styles.Contactbox, { marginRight: "4%" }]}>
+          <Text style={styles.ContactboxTitle}>Call Us</Text>
           <Text style={styles.ContactboxText}>
-            <Icon name="call" size={12} color={'#B22335'} />
+            <Icon name="call" size={12} color={"#B22335"} />
             614-602-7980
           </Text>
         </View>
         <View style={styles.Contactbox}>
-          <Text style={styles.ContactboxTitle}>
-
-            Locate Us
-          </Text>
+          <Text style={styles.ContactboxTitle}>Locate Us</Text>
           <Text style={styles.ContactboxText}>
-            <Icon name="location" size={12} color={'#B22335'} />
+            <Icon name="location" size={12} color={"#B22335"} />
             Columbus, Ohio
           </Text>
         </View>
       </View>
       <View style={styles.container}>
-        <View ><Text style={styles.fomeHead}>Reach Out to Us</Text></View>
-        <View >
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={[styles.formLable, { width: '48%', marginRight: '4%' }]}>First Name *</Text>
+        <View>
+          <Text style={styles.fomeHead}>Reach Out to Us</Text>
+        </View>
+        <View>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={[styles.formLable, { width: "48%", marginRight: "4%" }]}
+            >
+              First Name *
+            </Text>
             <Text style={styles.formLable}>Last Name*</Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             <TextInput
-              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              style={[styles.input, { width: "48%", marginRight: "4%" }]}
               onChangeText={(text) => handleInputChange("firstName", text)}
             />
             <TextInput
-              style={[styles.input, { width: '48%' }]}
+              style={[styles.input, { width: "48%" }]}
               onChangeText={(text) => handleInputChange("lastName", text)}
             />
           </View>
         </View>
 
-        <Text style={styles.formLable} >E-mail*</Text>
+        <Text style={styles.formLable}>E-mail*</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => handleInputChange("gmail", text)}
@@ -118,18 +118,22 @@ export default function FormContact() {
           style={styles.input}
           onChangeText={(text) => handleInputChange("address", text)}
         />
-        <View >
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={[styles.formLable, { width: '48%', marginRight: '4%' }]}>City *</Text>
+        <View>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={[styles.formLable, { width: "48%", marginRight: "4%" }]}
+            >
+              City *
+            </Text>
             <Text style={styles.formLable}>State *</Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             <TextInput
-              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              style={[styles.input, { width: "48%", marginRight: "4%" }]}
               onChangeText={(text) => handleInputChange("city", text)}
             />
             <TextInput
-              style={[styles.input, { width: '48%', marginRight: '4%' }]}
+              style={[styles.input, { width: "48%", marginRight: "4%" }]}
               onChangeText={(text) => handleInputChange("state", text)}
             />
           </View>
@@ -148,14 +152,13 @@ export default function FormContact() {
           numberOfLines={8}
           onChangeText={(text) => handleInputChange("message", text)}
           placeholder="Please share detailed information about your project to help us understand better."
-
         />
-        <View style={{ alignItems: 'center', }}>
+        <View style={{ alignItems: "center" }}>
           <TouchableOpacity onPress={handleSubmit} style={styles.submitButton}>
-
-            <Text style={{ color: '#F9F9F9', fontSize: 14, fontWeight: '400' }}>Submit</Text>
-
-          </TouchableOpacity >
+            <Text style={{ color: "#F9F9F9", fontSize: 14, fontWeight: "400" }}>
+              Submit
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{ marginBottom: 50 }}></View>
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 30,
     padding: 5,
-    borderRadius: 2
+    borderRadius: 2,
   },
   dropdown: {
     height: 40,
@@ -184,8 +187,6 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
     paddingTop: 12,
     paddingLeft: 10,
-
-
   },
   placeholderStyle: {
     fontSize: 14,
@@ -197,50 +198,50 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
-
   },
   fomeHead: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
     marginBottom: 50,
-    color: '#181818'
+    color: "#181818",
   },
   formLable: {
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: "400",
     marginBottom: 5,
-    color: '#181818'
+    color: "#181818",
   },
   submitButton: {
-    backgroundColor: '#B22335',
+    backgroundColor: "#B22335",
     width: 175,
     paddingHorizontal: 24,
     paddingTop: 10,
     paddingBottom: 13,
-    alignItems: 'center',
+    alignItems: "center",
     // marginBottom: 50
   },
   Contactbox: {
     width: "48%",
     height: 103,
-    backgroundColor: '#F5CCD1',
+    backgroundColor: "#F5CCD1",
     borderRadius: 4,
     padding: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
+    alignItems: "center",
   },
   ContactboxTitle: {
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: "500",
     letterSpacing: 0.36,
-    // marginBottom: 15
-    lineHeight: 50
-  }
-  , ContactboxText: {
+    marginHorizontal: 10,
+  },
+  ContactboxText: {
     fontSize: 14,
-    fontWeight: '400',
+    fontWeight: "400",
     letterSpacing: 0.28,
-    color: '#323539'
-  }
+    color: "#323539",
+    textAlign: "justify",
+    alignItems: "center",
+  },
 });
-

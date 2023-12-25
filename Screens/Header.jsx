@@ -28,7 +28,7 @@ export default function Header(props) {
         <Image
           style={{
             width: "70%",
-            height: "100%",
+            height: "80%",
           }}
           source={logo}
         />
@@ -55,6 +55,7 @@ export default function Header(props) {
                 style={{
                   borderWidth: 1,
                   paddingVertical: 10,
+                  paddingHorizontal: 5,
                   alignItems: "center",
                   backgroundColor: "#3D3B6D",
                   borderRadius: 3,
@@ -65,7 +66,6 @@ export default function Header(props) {
                   style={{
                     fontSize: 11,
                     fontWeight: 400,
-
                     color: "#F9F9F9",
                   }}
                 >

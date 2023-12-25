@@ -100,9 +100,8 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    paddingHorizontal: "7%",
-    paddingVertical: "3%",
-    alignItems: "center",
+    marginHorizontal: "5%",
+    paddingVertical: "10%",
   },
   text: {
     fontSize: 20,
@@ -114,9 +113,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     textAlign: "justify",
-    fontSize: 22,
+    fontSize: 21,
     fontWeight: "500",
-    marginTop: 15,
+    marginVertical: "5%",
+    marginRight: "16%",
   },
   redText: {
     color: "#B22335",
@@ -126,23 +126,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   para: {
-    fontSize: 18,
-    marginTop: 0,
-    marginHorizontal: "6%",
+    fontSize: 17,
+    width: "90%",
     color: "#323539",
   },
   buttonContainer: {
-    backgroundColor: "#B22335",
+    backgroundColor: "crimson",
     width: "50%",
     padding: 10,
-
-    alignItems: "center",
-    marginHorizontal: "6%",
     marginTop: 20,
   },
   buttonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });

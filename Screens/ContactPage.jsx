@@ -10,11 +10,11 @@ import {
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import roof from "../assets/AboutPageImages/roof.jpg";
+
 import Footer from "../Components/Footer";
 import Cards3 from "../Components/Cards3";
 import FormContact from "../Components/FormContact";
-import SidePointNavigation from "../Components/SidePointNavigation";
+
 import Header from "../Screens/Header";
 
 export default function ContactPage() {
@@ -35,7 +35,7 @@ export default function ContactPage() {
         <View>
           <FormContact />
         </View>
-        {/* <Footer /> */}
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

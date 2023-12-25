@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -31,47 +31,22 @@ import Agreements from "../Components/Agreements";
 
 export default function HomePage() {
   const navigation = useNavigation();
+  const videoRef = useRef(null);
 
-  const sample = require("../assets/final.gif");
-  // const videoRef = useRef(null);
-  // const navigation = useNavigation();
-  // useEffect(() => {
-  //   const unsubscribe = navigation.addListener("beforeRemove", (e) => {
-  //     // Pause or stop the video when navigating away
-  //     if (videoRef.current) {
-  //       videoRef.current.pauseAsync(); // or use videoRef.current.stopAsync();
-  //     }
-  //   });
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playAsync();
+    }
 
-  //   const playVideo = async () => {
-  //     if (videoRef.current) {
-  //       try {
-  //         if (Platform.OS === "ios") {
-  //           // On iOS, autoplay is not allowed, so play manually
-  //           await videoRef.current.playAsync();
-  //         } else {
-  //           // On Android, use shouldPlay prop for autoplay
-  //           // Ensure shouldPlay is true for Android
-  //           videoRef.current.playAsync();
-  //         }
-  //       } catch (error) {
-  //         or("Error playing video:", error);
-  //       }
-  //     }
-  //   };
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pauseAsync();
+      }
+    };
+  }, []);
 
-  //   playVideo(); // Play the video when component mounts
+  const sample = require("../assets/roof.mp4");
 
-  //   return unsubscribe;
-  // }, [navigation]);
-  // const handlePlaybackStatusUpdate = (status) => {
-  //   if (status.didJustFinish) {
-  //     // Check if videoRef is available
-  //     if (videoRef.current) {
-  //       videoRef.current.replayAsync();
-  //     }
-  //   }
-  // };
   return (
     <SafeAreaView>
       <Header button={true} />
@@ -79,7 +54,15 @@ export default function HomePage() {
       <ScrollView style={{ height: "auto" }}>
         <SafeAreaView>
           <View>
-            <Image source={sample} style={styles.backgroundVideoContainer} />
+            <Video
+              ref={videoRef}
+              source={sample}
+              style={styles.backgroundVideoContainer}
+              resizeMode="cover"
+              shouldPlay={true}
+              isMuted={true}
+              isLooping={true}
+            />
             <View style={styles.overlay}>
               <Text style={styles.overlayText}>
                 Elevate {"\n"}Every Horizon{"\n"}With Our Roofing{"\n"}Expertise
@@ -164,14 +147,7 @@ export default function HomePage() {
           </View>
           {/*second card */}
           <View style={styles.servicesCards}>
-            <View
-              // style={{
-              //   flex: 1,
-              //   justifyContent: "center", // Centers vertically
-              //   alignItems: "center", // Centers horizontally
-              // }}
-              style={styles.ourImageBackground}
-            >
+            <View style={styles.ourImageBackground}>
               <Image source={ourService2} style={styles.ourImage} />
             </View>
             <Text style={styles.servicesCardsHeading}>Commercial Roofing</Text>
@@ -189,14 +165,7 @@ export default function HomePage() {
           </View>
           {/*3rd card */}
           <View style={styles.servicesCards}>
-            <View
-              // style={{
-              //   flex: 1,
-              //   justifyContent: "center", // Centers vertically
-              //   alignItems: "center", // Centers horizontally
-              // }}
-              style={styles.ourImageBackground}
-            >
+            <View style={styles.ourImageBackground}>
               <Image source={ourService3} style={styles.ourImage} />
             </View>
             <Text style={styles.servicesCardsHeading}>Siding Enhancements</Text>
@@ -214,14 +183,7 @@ export default function HomePage() {
           </View>
           {/*4th card*/}
           <View style={styles.servicesCards}>
-            <View
-              // style={{
-              //   // flex: 1,
-              //   // justifyContent: "center", // Centers vertically
-              //   // alignItems: "center", // Centers horizontally
-              // }}
-              style={styles.ourImageBackground}
-            >
+            <View style={styles.ourImageBackground}>
               <Image source={ourService4} style={styles.ourImage} />
             </View>
             <Text style={styles.servicesCardsHeading}>Gutter Systems</Text>
@@ -240,14 +202,7 @@ export default function HomePage() {
           </View>
           {/*5th card */}
           <View style={styles.servicesCards}>
-            <View
-              // style={{
-              //   // flex: 1,
-              //   // justifyContent: "center", // Centers vertically
-              //   // alignItems: "center", // Centers horizontally
-              // }}
-              style={styles.ourImageBackground}
-            >
+            <View style={styles.ourImageBackground}>
               <Image source={ourService5} style={styles.ourImage} />
             </View>
             <Text style={styles.servicesCardsHeading}>Window Services</Text>
@@ -265,31 +220,12 @@ export default function HomePage() {
             </TouchableOpacity>
           </View>
         </SafeAreaView>
-        {/* <TouchableOpacity
-          style={{
-            backgroundColor: "#B22335",
-            width: "55%",
-            padding: 6,
-            alignItems: "center",
-            marginHorizontal: "23%",
-            marginTop: 40,
-          }}
-        >
-          <Text
-            style={styles.buttonText}
-            onPress={() => {
-              navigation.navigate("Services");
-            }}
-          >
-            VIEW ALL SERVICES
-          </Text>
-        </TouchableOpacity> */}
+
         <Welcome />
 
         <PromiseText />
         <Cards2 />
-        {/* <MyCarousel /> */}
-        {/* <TextCarousal /> */}
+
         <Agreements />
         <Footer />
       </ScrollView>
@@ -304,51 +240,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
-    resizeMode: "stretch",
+    resizeMode: "cover",
     width: "100%",
   },
-  // view: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flex: 1,
-  //   height: 200,
-  //   backgroundColor: "#B22335",
-  // },
-  // view_white: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flex: 1,
-  //   height: 200,
-  //   backgroundColor: "white",
-  // },
-  // view_mission_black: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flex: 1,
-  //   height: 200,
-  //   backgroundColor: "black",
-  //   borderColor: "#B22335",
-  //   borderWidth: 3,
-  // },
-  // view_black: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flex: 1,
-  //   height: 200,
-  //   backgroundColor: "black",
-  //   borderColor: "#B22335",
-  //   borderWidth: 3,
-  // },
-  // image: {
-  //   width: 50, // set the width of the image as needed
-  //   height: 50, // set the height of the image as needed
-  //   resizeMode: "cover", // or 'contain' based on your preference
-  //   marginRight: 10, // add margin for spacing between image and text
-  // },
+
   backText: {
     color: "white",
     fontSize: 15,

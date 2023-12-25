@@ -9,7 +9,7 @@
       "portrait",
       "landscape"
     ],
-    "icon": "./assets/UltimatesLogo.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/UltimatesLogo.png",
@@ -24,9 +24,9 @@
       "bundleIdentifier": "UltimatesRoofingLLC"
     },
     "android": {
-      "icon": "./assets/UltimatesLogo.png",
+      "icon": "./assets/icon.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/UltimatesLogo.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.viswa_aditya.ultimatesroofingsolutionapplication"

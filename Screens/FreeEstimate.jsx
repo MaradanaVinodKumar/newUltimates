@@ -61,18 +61,7 @@ export default function FreeEstimate() {
   const navigation = useNavigation();
   return (
     <SafeAreaView>
-      <View style={styles.sidePoint}>
-        <TouchableOpacity>
-          <MaterialIcons
-            name="request-quote"
-            size={34}
-            color="white"
-            onPress={() => {
-              navigation.navigate("quote");
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+      
       <ScrollView>
         <View style={{ flex: 1 }}>
           <Text style={styles.textAboveImage}>
