@@ -17,6 +17,7 @@ import Footer from "../Components/Footer";
 import Header from "../Screens/Header";
 import arrow from "../assets/ServicePageImages/Arrow.png";
 import Trust from "../Components/Trust";
+import ButtonCarousel from "../Components/ButtonCarousel";
 
 export default function ServicePage() {
   const navigation = useNavigation();
@@ -197,60 +198,12 @@ export default function ServicePage() {
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{ backgroundColor: "#B22335", height: 170, marginTop: 40 }}
-        >
-          <Text
-            style={{
-              color: "white",
-              fontSize: 30,
-              fontWeight: "bold",
-              textAlign: "center",
-              marginTop: 10,
-            }}
-          >
-            GET A FREE ESTIMATE
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              textAlign: "center",
-              marginTop: 20,
-              fontSize: 16,
-              marginHorizontal: 10,
-            }}
-          >
-            Have a question about any of our service? Give us a call at (614)
-            766-8100 or email us for a Free Estimate
-          </Text>
+        <View style={{ marginHorizontal: "5%", marginVertical: "-10%" }}>
+          <ButtonCarousel />
         </View>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "white",
-            width: "55%",
-            padding: 8,
-            left: 60,
-            bottom: 20,
-            alignItems: "center",
-            textAlign: "center",
-            display: "flex",
-            marginHorizontal: "6%",
-          }}
-          onPress={() => navigation.navigate("FreeEstimate")}
-        >
-          <Text
-            style={{
-              color: "#B22335",
-              fontSize: 16,
-              fontWeight: "bold",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-          >
-            GET A FREE ESTIMATE
-          </Text>
-        </TouchableOpacity>
-      <Trust/>
+        <View style={{ marginTop: 35 }}>
+          <Trust />
+        </View>
       </ScrollView>
     </>
   );

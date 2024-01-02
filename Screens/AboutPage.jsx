@@ -26,21 +26,32 @@ export default function AboutPage() {
       {/* <SidePointNavigation /> */}
 
       <ScrollView>
-        <Text
+      <View
           style={{
-            fontSize: 22,
-            fontWeight: "bold",
+            flexDirection: "row",
+            justifyContent: "space-between",
             marginHorizontal: "5%",
-            marginTop: 20,
+            marginTop: 10,
           }}
         >
-          About
-        </Text>
+          <Text
+            style={{
+              color: "#181818",
+              fontSize: 20,
+              fontWeight: "normal",
+              letterSpacing: 0.4,
+              fontFamily: "Hauora",
+            }}
+          >
+            About
+          </Text>
+          <Text style={{ color: "#181818" }}>Back</Text>
+        </View>
         <Text
           style={{
             fontSize: 14,
             marginHorizontal: "5%",
-            marginVertical: "2%",
+            marginVertical: "4%",
             fontWeight: 400,
             letterSpacing: 0.28,
             fontFamily: "Hauora",
