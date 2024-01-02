@@ -4,26 +4,67 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  Dimensions,
   TouchableOpacity,
   ActivityIndicator,
   ScrollView,
-  Image,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import axios from "axios";
 const KEY = "b182986efc1242b2a8c2709aa828fb67"; // Replace with your OpenCage API Key
+const defaultRegion = {
+  latitude: 16.757,
+  longitude: 81.6922,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
+const handleSearchLocation = (
+  setLoading,
+  setMarkerCoordinates,
+  textInputValue
+) => {
+  setLoading(true);
+
+  axios
+    .get(
+      `https://[YOUR_IP_ADDRESS]/geocode/v1/json?q=${textInputValue}&key=${KEY}`
+    )
+    .then((response) => {
+      const firstResult = response.data.results[0];
+
+      if (firstResult) {
+        setMarkerCoordinates({
+          latitude: firstResult.geometry.lat,
+          longitude: firstResult.geometry.lng,
+        });
+      }
+    })
+    .catch((error) => {
+      // console.error("Error fetching geocoding data", error.message);
+      Alert.alert("Error fetching geocoding data", error.message);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+};
+
+const Map = (props) => {
+  return (
+    <>
+      <MapView style={styles.map} region={props.region}>
+        <Marker
+          coordinate={props.Coordinates}
+          title="Selected Location"
+          description="Location based on entered text"
+        />
+      </MapView>
+    </>
+  );
+};
 
 export default function InstantQuote() {
-
-  const defaultRegion = {
-    latitude: 16.757,
-    longitude: 81.6922,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  };
-
   const [mapRegion, setMapRegion] = useState(defaultRegion);
   const [textInputValue, setTextInputValue] = useState("");
   const [markerCoordinates, setMarkerCoordinates] = useState({
@@ -42,42 +83,11 @@ export default function InstantQuote() {
     });
   }, [markerCoordinates]);
 
-  const handleSearchLocation = () => {
-    setLoading(true);
-
-    axios
-      .get(
-        `https://api.opencagedata.com/geocode/v1/json?q=${textInputValue}&key=${KEY}`
-      )
-      .then((response) => {
-        const firstResult = response.data.results[0];
-
-        if (firstResult) {
-          setMarkerCoordinates({
-            latitude: firstResult.geometry.lat,
-            longitude: firstResult.geometry.lng,
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching geocoding data", error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
-          <MapView style={styles.map} region={mapRegion}>
-            <Marker
-              coordinate={markerCoordinates}
-              title="Selected Location"
-              description="Location based on entered text"
-            />
-          </MapView>
+          <Map region={mapRegion} Coordinates={markerCoordinates} />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
@@ -88,7 +98,13 @@ export default function InstantQuote() {
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={handleSearchLocation}
+            onPress={() => {
+              handleSearchLocation(
+                setLoading,
+                setMarkerCoordinates,
+                textInputValue
+              );
+            }}
             disabled={loading}
           >
             {loading ? (
@@ -98,11 +114,6 @@ export default function InstantQuote() {
             )}
           </TouchableOpacity>
         </View>
-        {/* <View style={styles.card_container}>
-        <Card imageSource={require("../assets/pricing.png")} title="Card 1" />
-        <Card imageSource={require("../assets/pricing.png")} title="Card 2" />
-        <Card imageSource={require("../assets/pricing.png")} title="Card 3" />
-      </View> */}
       </ScrollView>
     </SafeAreaView>
   );

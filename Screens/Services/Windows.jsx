@@ -9,7 +9,7 @@ export default function Windows() {
       <ScrollView>
         <View style={{ flex: 1 }}>
           <Text style={styles.textAboveImage}>Ultimates ROOFING & SIDING</Text>
-          <Text style={styles.textAboveImage2}>WINDOWS</Text>
+          <Text style={styles.textAboveImage2}>WINDOW SERVICES</Text>
           <Image source={roof} style={styles.roof} />
         </View>
       </ScrollView>
@@ -35,12 +35,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10, // Adjust the top position as needed
     fontSize: 25,
-
     width: "100%",
     fontWeight: "bold",
     color: "white",
     zIndex: 1,
     marginTop: 75,
-    marginLeft: 140,
+    marginLeft: 80,
   },
 });

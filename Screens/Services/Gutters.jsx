@@ -9,7 +9,7 @@ export default function Gutters() {
       <ScrollView>
         <View style={{ flex: 1 }}>
           <Text style={styles.textAboveImage}>Ultimates ROOFING & SIDING</Text>
-          <Text style={styles.textAboveImage2}>GUTTERS</Text>
+          <Text style={styles.textAboveImage2}>GUTTER SYSTEMS</Text>
           <Image source={roof} style={styles.roof} />
         </View>
       </ScrollView>
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     color: "white",
     zIndex: 1,
     marginTop: 75,
-    marginLeft: 140,
+    marginLeft: 80,
   },
 });

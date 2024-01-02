@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, Alert } from "react-native";
 import { View, Text, TextInput, Button, StyleSheet, Image } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-import Icon from "@expo/vector-icons/Ionicons";
 
 export default function FormContact() {
   const data = [
@@ -32,33 +31,17 @@ export default function FormContact() {
   };
 
   const handleSubmit = () => {
-    // Handle form submission here
-    console.log(formData);
-    // You can send the form data to your server or perform any other actions
+    const isEmpty = Object.values(formData).some((value) => value === "");
+    if (isEmpty) {
+      // Display an alert if any field is empty
+      Alert.alert("Please fill out all required fields.");
+    }
   };
 
   return (
     <ScrollView>
-      <View style={[styles.container, { flexDirection: "row" }]}>
-        <View style={[styles.Contactbox, { marginRight: "4%" }]}>
-          <Text style={styles.ContactboxTitle}>Call Us</Text>
-          <Text style={styles.ContactboxText}>
-            <Icon name="call" size={12} color={"#B22335"} />
-            614-602-7980
-          </Text>
-        </View>
-        <View style={styles.Contactbox}>
-          <Text style={styles.ContactboxTitle}>Locate Us</Text>
-          <Text style={styles.ContactboxText}>
-            <Icon name="location" size={12} color={"#B22335"} />
-            Columbus, Ohio
-          </Text>
-        </View>
-      </View>
       <View style={styles.container}>
-        <View>
-          <Text style={styles.fomeHead}>Reach Out to Us</Text>
-        </View>
+       
         <View>
           <View style={{ flexDirection: "row" }}>
             <Text
@@ -199,11 +182,11 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 16,
   },
-  fomeHead: {
+  formHead: {
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: "500",
-    marginBottom: 50,
+    marginBottom: 40,
     color: "#181818",
   },
   formLable: {
@@ -220,28 +203,5 @@ const styles = StyleSheet.create({
     paddingBottom: 13,
     alignItems: "center",
     // marginBottom: 50
-  },
-  Contactbox: {
-    width: "48%",
-    height: 103,
-    backgroundColor: "#F5CCD1",
-    borderRadius: 4,
-    padding: 20,
-    paddingVertical: 20,
-    alignItems: "center",
-  },
-  ContactboxTitle: {
-    fontSize: 18,
-    fontWeight: "500",
-    letterSpacing: 0.36,
-    marginHorizontal: 10,
-  },
-  ContactboxText: {
-    fontSize: 14,
-    fontWeight: "400",
-    letterSpacing: 0.28,
-    color: "#323539",
-    textAlign: "justify",
-    alignItems: "center",
   },
 });

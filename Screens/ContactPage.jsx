@@ -1,37 +1,33 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
+import Icon from "@expo/vector-icons/Ionicons";
 import Footer from "../Components/Footer";
-import Cards3 from "../Components/Cards3";
 import FormContact from "../Components/FormContact";
-
 import Header from "../Screens/Header";
 
 export default function ContactPage() {
   const navigation = useNavigation();
   return (
     <SafeAreaView>
-      <Header button={false} />
-      {/* <SidePointNavigation /> */}
+      <Header button={true} />
+
       <ScrollView>
-        {/* <View style={{ flex: 1 }}>
-          <Text style={styles.textAboveImage}>Ultimates ROOFING & SIDING</Text>
-          <Text style={styles.textAboveImage2}>CONTACT US</Text>
-          <Image source={roof} style={styles.roof} />
-        </View> */}
-        {/* <View>
-          <Cards3 />
-        </View> */}
+        <View style={styles.contactContainer}>
+          {renderContactBox("614-602-7980")}
+          {renderContactBox("Thossan247@gmail.com", "Rockakash100@gmail.com")}
+          {renderContactBox("Ultimates Roofing LLC,", "Columbus, Ohio")}
+        </View>
+
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ fontSize: 16, fontWeight: 500, letterSpacing: 0.32 }}>
+            Business Hours:
+          </Text>
+          <Text style={{ fontSize: 14, fontWeight: 400, letterSpacing: 0.28 }}>
+            Monday to Friday - 9:00 AM to 5:00 PM
+          </Text>
+        </View>
+
         <View>
           <FormContact />
         </View>
@@ -40,35 +36,55 @@ export default function ContactPage() {
     </SafeAreaView>
   );
 }
+
+const renderContactBox = (title, subtitle) => (
+  <View style={styles.ContactBox}>
+    <View style={styles.textContainer}>
+      <Icon name="ios-call" size={24} color="#333" />
+    </View>
+    <View style={styles.iconContainer}>
+      <Text style={styles.ContactBoxTitle}>{title}</Text>
+      {subtitle && <Text style={styles.ContactBoxTitle}>{subtitle}</Text>}
+    </View>
+  </View>
+);
+
 const styles = StyleSheet.create({
-  viewStyle: {
-    display: "flex",
+  contactContainer: {
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginTop: "5%",
+    paddingHorizontal: "5%",
+  },
+  ContactBox: {
+    flexDirection: "row",
+    width: "100%",
+    height: 80,
+    backgroundColor: "#3D3B6D",
+    borderRadius: 4,
+    alignItems: "center",
+    marginBottom: 15,
+
+    paddingHorizontal: 10,
+  },
+
+  iconContainer: {
+    width: "100",
     justifyContent: "center",
     alignItems: "center",
+  },
+  textContainer: {
     flex: 1,
+    marginLeft: 10,
+    justifyContent: "space-around",
   },
-  roof: {
-    height: 200,
-    backgroundColor: "rgba(30, 30, 42, 0.57)",
+  ContactBoxTitle: {
+    fontSize: 14,
+    fontWeight: "400",
+    letterSpacing: 0.28,
+    color: "#F9F9F9",
   },
-  textAboveImage: {
-    position: "absolute",
-    top: 10, // Adjust the top position as needed
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
-    zIndex: 1,
-    marginTop: 50,
-    marginLeft: 25,
-  },
-  textAboveImage2: {
-    position: "absolute",
-    top: 10, // Adjust the top position as needed
-    fontSize: 35,
-    fontWeight: "bold",
-    color: "white",
-    zIndex: 1,
-    marginTop: 75,
-    marginLeft: 105,
+  formContainer: {
+    paddingHorizontal: "5%",
   },
 });

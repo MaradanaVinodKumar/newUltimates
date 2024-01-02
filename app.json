@@ -5,10 +5,7 @@
     "privacy": "public",
     "description": "This is a complete solution for your roofing",
     "version": "1.0.0",
-    "orientation": [
-      "portrait",
-      "landscape"
-    ],
+    "orientation": "portrait", 
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {

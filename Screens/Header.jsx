@@ -9,8 +9,6 @@ import {
 } from "react-native";
 import React from "react";
 import logo from "../assets/UltimatesLogo.png";
-// import GifLogo from "../assets/UltimatesLogoGif2.gif"
-// import Icon from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Header(props) {
@@ -55,16 +53,16 @@ export default function Header(props) {
                 style={{
                   borderWidth: 1,
                   paddingVertical: 10,
-                  paddingHorizontal: 5,
+                  paddingHorizontal: 3,
                   alignItems: "center",
                   backgroundColor: "#3D3B6D",
                   borderRadius: 3,
-                  maxWidth: 600,
+                  maxWidth: 650,
                 }}
               >
                 <Text
                   style={{
-                    fontSize: 11,
+                    fontSize: 10,
                     fontWeight: 400,
                     color: "#F9F9F9",
                   }}

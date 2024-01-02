@@ -10,13 +10,14 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import roof from "../assets/AboutPageImages/roof.jpg";
 import Footer from "../Components/Footer";
-import { Dropdown } from "react-native-element-dropdown";
+import FormContact from "../Components/FormContact";
 
 export default function FreeEstimate() {
+  const navigation = useNavigation();
+
   const data = [
     { label: "Residential Roofing", value: "ResidentialRoofing" },
     { label: "Commercial Roofing", value: "CommercialRoofing" },
@@ -58,139 +59,20 @@ export default function FreeEstimate() {
     // You can access form data using the state variables (firstName, lastName, etc.)
   };
 
-  const navigation = useNavigation();
+
   return (
     <SafeAreaView>
-      
       <ScrollView>
         <View style={{ flex: 1 }}>
-          <Text style={styles.textAboveImage}>
-            ULTIMATES ROOFING & SIDING
-            <Text style={{ color: "red" }}>---------------</Text>
-          </Text>
+          <Text style={styles.textAboveImage}>ULTIMATES ROOFING & SIDING</Text>
           <Text style={styles.textAboveImage2}>REQUEST A FREE ESTIMATE</Text>
           <Image source={roof} style={styles.roof} />
         </View>
         <View style={styles.container}>
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>First Name *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your first name"
-              onChangeText={setFirstName}
-              value={firstName}
-            />
+          <View>
+            <Text style={styles.formHead}>Free Estimate</Text>
           </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Last Name</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your last name"
-              onChangeText={setLastName}
-              value={lastName}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Your Email Address *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your Gmail"
-              onChangeText={setGmail}
-              value={gmail}
-              keyboardType="email-address"
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Your Phone Number *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your phone number"
-              onChangeText={setPhoneNumber}
-              value={phoneNumber}
-              keyboardType="phone-pad"
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Choose a Service *</Text>
-            <Dropdown
-              style={styles.dropdown}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={data}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder="Select a service"
-              searchPlaceholder="Search..."
-              value={value}
-              onChange={(item) => {
-                setValue(item.value);
-              }}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>City *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your city"
-              onChangeText={setCity}
-              value={city}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Zip Code *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your zip code"
-              onChangeText={setZip}
-              value={zip}
-              keyboardType="numeric"
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>State *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your state"
-              onChangeText={setState}
-              value={state}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Address *</Text>
-            <TextInput
-              style={styles.input}
-              // placeholder="Enter your address"
-              onChangeText={setAddress}
-              value={address}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Message</Text>
-            <TextInput
-              style={[styles.input, { height: 100 }]}
-              placeholder="Please feel free to add as much information as you like about your project. Detailed information will help us understand better."
-              onChangeText={setMessage}
-              value={message}
-              multiline={true}
-            />
-          </View>
-
-          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>SEND MESSAGE</Text>
-          </TouchableOpacity>
+          <FormContact />
         </View>
         <Footer />
       </ScrollView>
@@ -205,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   label: {
-    color:'white'
+    color: "white",
   },
   sidePoint: {
     height: 60,
@@ -250,8 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 16,
     marginVertical: 20,
-    backgroundColor: 'black',
-    paddingVertical:30
+    paddingVertical: 30,
   },
   input: {
     height: 40,
@@ -259,7 +140,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 10,
-   
   },
   button: {
     backgroundColor: "red",
@@ -278,15 +158,21 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 14,
-    color:'white'
+    color: "white",
   },
   selectedTextStyle: {
     fontSize: 16,
-    color:'white'
+    color: "white",
   },
 
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+  formHead: {
+    textAlign: "center",
+    fontSize: 22,
+    fontWeight: "500",
+    color: "#181818",
   },
 });

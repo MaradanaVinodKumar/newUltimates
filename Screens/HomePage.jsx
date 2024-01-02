@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-
-import { Video } from "expo-av";
+import { useFonts } from "expo-font";
+import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
 
 import Header from "../Screens/Header";
 import ourService1 from "../assets/ServicePageImages/our-service1.jpg";
@@ -17,65 +17,63 @@ import ourService2 from "../assets/ServicePageImages/our-service2.jpg";
 import ourService3 from "../assets/ServicePageImages/our-service3.jpg";
 import ourService4 from "../assets/ServicePageImages/our-service4.jpg";
 import ourService5 from "../assets/ServicePageImages/our-service5.jpg";
-import Welcome from "../Components/Welcome";
-import PromiseText from "../Components/PromiseText";
 import { useNavigation } from "@react-navigation/native";
-import Cards2 from "../Components/Cards2";
-import Footer from "../Components/Footer";
-import Agreements from "../Components/Agreements";
-
-// import TextCarousal from "../Components/TextCarousal";
-
-// import { Platform } from "react-native";
-// import { useNavigation } from "@react-navigation/native";
+import { SliderBox } from "react-native-image-slider-box";
+import Cards from "../Components/Cards";
+import Trust from "../Components/Trust";
+import Reviews from "../Components/Reviews";
 
 export default function HomePage() {
   const navigation = useNavigation();
-  const videoRef = useRef(null);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playAsync();
-    }
+  let [fontsLoaded] = useFonts({
+    Hauora: HauoraRegular,
+  });
 
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.pauseAsync();
-      }
-    };
-  }, []);
-
-  const sample = require("../assets/roof.mp4");
+  const images = [
+    require("../assets/c1.jpeg"),
+    require("../assets/c2.jpeg"),
+    require("../assets/c3.jpeg"),
+  ];
 
   return (
     <SafeAreaView>
       <Header button={true} />
-      {/* <SidePointNavigation /> */}
+
       <ScrollView style={{ height: "auto" }}>
         <SafeAreaView>
           <View>
-            <Video
-              ref={videoRef}
-              source={sample}
+            <SliderBox
+              images={images}
+              sliderBoxHeight={200}
+              SliderBoxWidth={"100%"}
+              dotColor="white"
+              inactiveDotColor="grey"
               style={styles.backgroundVideoContainer}
-              resizeMode="cover"
-              shouldPlay={true}
-              isMuted={true}
-              isLooping={true}
+              paginationBoxHorizontalMargin={40}
+              autoplay
+              autoplayInterval={2500}
+              circleLoop
             />
             <View style={styles.overlay}>
-              <Text style={styles.overlayText}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  textAlign: "justify",
+                  fontWeight: 500,
+                  color: "white",
+                  width: "84%",
+                  fontFamily: "Hauora",
+                  letterSpacing: 0.4,
+                }}
+              >
                 Elevate {"\n"}Every Horizon{"\n"}With Our Roofing{"\n"}Expertise
-              </Text>
-
-              <Text style={styles.sub_text}>
-                A symphony of strength resonating{"\n"}through every project
               </Text>
 
               <TouchableOpacity
                 style={{
-                  backgroundColor: "crimson",
-                  padding: 6,
+                  backgroundColor: "#F9F9F9",
+                  padding: 0,
                   width: "55%",
                   alignItems: "center",
                   justifyContent: "center",
@@ -89,8 +87,29 @@ export default function HomePage() {
               </TouchableOpacity>
             </View>
           </View>
+
+          <View style={{ marginTop: 15 }}>
+            <Text
+              style={{
+                color: "#323539",
+                fontSize: 14,
+                fontWeight: 400,
+                letterSpacing: 0.28,
+                fontFamily: "Hauora",
+                marginHorizontal: 25,
+              }}
+            >
+              At Ultimates Roofing LLC, we believe that every home and business
+              deserves the highest quality roofing solutions. Established
+              [Year], we have proudly served [Location] and surrounding areas,
+              earning a reputation for excellence in the Roofing and Siding
+              industry.
+            </Text>
+          </View>
+          <View>
+            <Cards />
+          </View>
         </SafeAreaView>
-        {/* <Cards1 /> */}
 
         <View style={styles.ourServiceBackground}>
           <Text style={{ fontSize: 30, fontWeight: "500", textAlign: "left" }}>
@@ -219,15 +238,9 @@ export default function HomePage() {
               <Text style={styles.buttonContainerText}>Learn More</Text>
             </TouchableOpacity>
           </View>
+          <Reviews/>
+          <Trust/>
         </SafeAreaView>
-
-        <Welcome />
-
-        <PromiseText />
-        <Cards2 />
-
-        <Agreements />
-        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
@@ -239,9 +252,8 @@ const styles = StyleSheet.create({
     height: Platform.OS === "ios" ? 480 : 450,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "transparent",
-    resizeMode: "cover",
     width: "100%",
+    resizeMode: "contain",
   },
 
   backText: {
@@ -278,7 +290,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   buttonText: {
-    color: "#F9F9F9",
+    color: "#B22335",
     fontSize: 16,
     fontWeight: "400",
   },
@@ -299,7 +311,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(30, 30, 42, 0.57)", // Set the desired transparency here
+    backgroundColor: "rgba(30, 30, 42, 0.27)", // Set the desired transparency here
     justifyContent: "center",
     alignItems: "center",
   },
@@ -309,6 +321,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     width: "84%",
+    fontFamily: "Hauora",
   },
   sub_text: {
     fontSize: 18,
