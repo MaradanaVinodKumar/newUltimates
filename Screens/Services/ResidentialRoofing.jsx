@@ -43,7 +43,7 @@ export default function ResidentialRoofing() {
           >
             Residential Roofing
           </Text>
-          <Text style={{ color: "#181818" }}>Back</Text>
+          <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("Service")} >Back</Text>
         </View>
         <View
           style={{
@@ -192,6 +192,7 @@ export default function ResidentialRoofing() {
             justifyContent: "flex-start",
             marginTop: 24,
             marginBottom: 89,
+            marginLeft:25
           }}
         >
           <TouchableOpacity

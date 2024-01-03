@@ -1,13 +1,11 @@
 import { StyleSheet, StatusBar, Text, Image } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "@expo/vector-icons/Ionicons";
-// import Icon from "react-native-vector-icons";
-// react-native-vector-icons
+import { MaterialIcons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InstantQuote from "../Screens/InstantQuote";
-import Header from "../Screens/Header";
 import ServicePage from "../Screens/ServicePage";
 import AboutPage from "../Screens/AboutPage";
 import HomePage from "../Screens/HomePage";
@@ -20,6 +18,7 @@ import FreeEstimate from "../Screens/FreeEstimate";
 import ContactPage from "../Screens/ContactPage";
 
 import { View } from "react-native";
+import ReviewsPage from "../Screens/ReviewsPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -229,7 +228,30 @@ const TabNavigator = () => {
             </Stack.Navigator>
           )}
         </Tab.Screen>
-
+        <Tab.Screen
+          name="Reviews"
+          options={{
+            tabBarIcon: ({ focused }) => (
+             
+              <MaterialIcons
+                name="rate-review"
+                size={focused ? 30 : 25}
+                color={focused ? "crimson" : "black"}
+                style={{ padding: "2.5%" }}
+              />
+            ),
+          }}
+        >
+          {() => (
+            <Stack.Navigator>
+             <Stack.Screen
+                name="reviews"
+                component={ReviewsPage}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          )}
+        </Tab.Screen>
         <Tab.Screen
           name="Contact"
           options={{

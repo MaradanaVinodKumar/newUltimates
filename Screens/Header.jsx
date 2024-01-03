@@ -51,11 +51,11 @@ export default function Header(props) {
             <TouchableNativeFeedback onPress={() => nav.navigate("quote")}>
               <View
                 style={{
-                  borderWidth: 1,
+                  
                   paddingVertical: 10,
                   paddingHorizontal: 3,
                   alignItems: "center",
-                  backgroundColor: "#3D3B6D",
+                  backgroundColor: "#B22335",
                   borderRadius: 3,
                   maxWidth: 650,
                 }}

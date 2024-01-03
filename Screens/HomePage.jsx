@@ -4,25 +4,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
 import { useFonts } from "expo-font";
 import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
 import { Ionicons } from "@expo/vector-icons";
-
 import Header from "../Screens/Header";
-import ourService1 from "../assets/ServicePageImages/our-service1.jpg";
-import ourService2 from "../assets/ServicePageImages/our-service2.jpg";
-import ourService3 from "../assets/ServicePageImages/our-service3.jpg";
-import ourService4 from "../assets/ServicePageImages/our-service4.jpg";
-import ourService5 from "../assets/ServicePageImages/our-service5.jpg";
 import { useNavigation } from "@react-navigation/native";
 import { SliderBox } from "react-native-image-slider-box";
 import Cards from "../Components/Cards";
 import Trust from "../Components/Trust";
-import Reviews from "../Components/Reviews";
 import ButtonCarousel from "../Components/ButtonCarousel";
 
 export default function HomePage() {
@@ -66,7 +58,7 @@ export default function HomePage() {
                 <TouchableOpacity
                   style={styles.GYFEButton}
                   onPress={() => {
-                    navigation.navigate("Contact");
+                    navigation.navigate("FreeEstimate");
                   }}
                 >
                   <View>
@@ -257,7 +249,6 @@ export default function HomePage() {
           <ButtonCarousel />
         </View>
 
-        <Reviews />
         <Trust />
       </ScrollView>
     </SafeAreaView>

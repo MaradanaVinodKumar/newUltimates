@@ -15,8 +15,10 @@ import Header from "../Screens/Header";
 import ThreeCards from "../Components/ThreeCards";
 import Trust from "../Components/Trust";
 import Reviews from "../Components/Reviews";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AboutPage() {
+  const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     Hauora: HauoraRegular,
   });
@@ -45,7 +47,7 @@ export default function AboutPage() {
           >
             About
           </Text>
-          <Text style={{ color: "#181818" }}>Back</Text>
+          <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("home")}>Back</Text>
         </View>
         <Text
           style={{
@@ -154,7 +156,7 @@ export default function AboutPage() {
                 textAlign: "center",
               }}
             >
-              10
+             20 - 25
             </Text>
             <Text
               style={{
@@ -196,7 +198,6 @@ export default function AboutPage() {
             </Text>
           </View>
         </View>
-        <Reviews/>
         <Trust />
       </ScrollView>
     </SafeAreaView>

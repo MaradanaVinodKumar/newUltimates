@@ -25,7 +25,27 @@ export default function ServicePage() {
     <>
       <Header button={true} />
       <ScrollView style={styles.viewStyle}>
-        <View style={{ flex: 1 }}></View>
+      <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginHorizontal: "5%",
+            marginTop: 10,
+          }}
+        >
+          <Text
+            style={{
+              color: "#181818",
+              fontSize: 20,
+              fontWeight: "normal",
+              letterSpacing: 0.4,
+              fontFamily: "Hauora",
+            }}
+          >
+            Services
+          </Text>
+          <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("home")}>Back</Text>
+        </View>
 
         <View style={{ gap: -40 }}>
           <TouchableOpacity onPress={() => navigation.navigate("Residential")}>
@@ -68,7 +88,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-                marginTop: 20, // Centers horizontally
+           
               }}
             >
               <Image source={service2} style={styles.ourImage} />
@@ -101,7 +121,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-                marginTop: 20, // Centers horizontally
+               
               }}
             >
               <Image source={service3} style={styles.ourImage} />
@@ -135,7 +155,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-                marginTop: 20, // Centers horizontally
+              
               }}
             >
               <Image source={service4} style={styles.ourImage} />
@@ -170,7 +190,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-                marginTop: -20, // Centers horizontally
+               
               }}
             >
               <Image source={service5} style={styles.ourImage} />
@@ -183,6 +203,7 @@ export default function ServicePage() {
                 justifyContent: "space-between",
                 padding: 20,
                 left: 20,
+              
               }}
             >
               <View>

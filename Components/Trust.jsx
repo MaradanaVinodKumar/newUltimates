@@ -56,11 +56,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    height: 120,
-    width: 150,
+    height: 100,
+   
     marginBottom: 10,
     borderRadius: 8,
-    resizeMode: "contain",
+    resizeMode:'center',
     padding: 10,
     marginHorizontal: 15, // Increase the marginRight value for increased gap
   },

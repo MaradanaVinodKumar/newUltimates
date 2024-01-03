@@ -19,12 +19,12 @@ const Reviews = () => {
   };
 
   const renderAccordion = (accordionKey, title, subHeading, content) => (
-    <View key={accordionKey} style={{ marginTop: 20, marginHorizontal: "3%" }}>
+    <View key={accordionKey} style={{ marginTop: 10, marginHorizontal: "3%" }}>
       <TouchableOpacity
         onPress={() => toggleAccordion(accordionKey)}
         style={styles.accordionHeader}
       >
-        <View>
+        <View  style={{color:'#E5E5E7'}}>
           <Text style={styles.accordionTitleText}>{title}</Text>
           {subHeading && (
             <Text style={styles.accordionSubheadingText}>{subHeading}</Text>
@@ -45,7 +45,8 @@ const Reviews = () => {
   );
 
   return (
-    <View>
+    <View style={{ marginTop: 0 }}>
+      
       <Text style={styles.heading}>Reviews</Text>
       <Text style={styles.subHeading}>Hear it from Our Clients</Text>
       <Text style={styles.description}>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     letterSpacing: 0.36,
     marginHorizontal: "5%",
-    marginTop: 50,
+    marginTop: 20,
     color: "#181818",
   },
   subHeading: {
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   },
   accordionContent: {
     padding: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#E5E5E7",
   },
 });
 
