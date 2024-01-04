@@ -13,6 +13,7 @@ import Icon from "@expo/vector-icons/Ionicons";
 
 import FormContact from "../Components/FormContact";
 import Header from "../Screens/Header";
+import BackNavigation from "../Components/BackNavigation";
 
 const ContactCard = ({ icon, title, subtitle, onPress }) => (
   <TouchableOpacity onPress={onPress}>
@@ -42,7 +43,7 @@ const ContactPage = () => {
       <Header button={true} />
 
       <ScrollView>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -73,7 +74,9 @@ const ContactPage = () => {
           >
             Back
           </Text>
-        </View>
+        </View> */}
+
+        <BackNavigation title={"Contact Us"} />
         <View style={styles.contactContainer}>
           <ContactCard
             icon="ios-call"

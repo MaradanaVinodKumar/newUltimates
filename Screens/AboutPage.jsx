@@ -16,6 +16,7 @@ import ThreeCards from "../Components/ThreeCards";
 import Trust from "../Components/Trust";
 import Reviews from "../Components/Reviews";
 import { useNavigation } from "@react-navigation/native";
+import BackNavigation from "../Components/BackNavigation";
 
 export default function AboutPage() {
   const navigation = useNavigation();
@@ -28,7 +29,7 @@ export default function AboutPage() {
       {/* <SidePointNavigation /> */}
 
       <ScrollView>
-      <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -48,7 +49,8 @@ export default function AboutPage() {
             About
           </Text>
           <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("home")}>Back</Text>
-        </View>
+        </View> */}
+        <BackNavigation title={"About"} />
         <Text
           style={{
             fontSize: 14,
@@ -156,7 +158,7 @@ export default function AboutPage() {
                 textAlign: "center",
               }}
             >
-             20 - 25
+              20 - 25
             </Text>
             <Text
               style={{

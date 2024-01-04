@@ -18,6 +18,7 @@ import Header from "../Screens/Header";
 import arrow from "../assets/ServicePageImages/Arrow.png";
 import Trust from "../Components/Trust";
 import ButtonCarousel from "../Components/ButtonCarousel";
+import BackNavigation from "../Components/BackNavigation";
 
 export default function ServicePage() {
   const navigation = useNavigation();
@@ -25,7 +26,7 @@ export default function ServicePage() {
     <>
       <Header button={true} />
       <ScrollView style={styles.viewStyle}>
-      <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -45,8 +46,8 @@ export default function ServicePage() {
             Services
           </Text>
           <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("home")}>Back</Text>
-        </View>
-
+        </View> */}
+        <BackNavigation title={"Services"} />
         <View style={{ gap: -40 }}>
           <TouchableOpacity onPress={() => navigation.navigate("Residential")}>
             <View
@@ -88,7 +89,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-           
+
               }}
             >
               <Image source={service2} style={styles.ourImage} />
@@ -121,7 +122,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-               
+
               }}
             >
               <Image source={service3} style={styles.ourImage} />
@@ -155,7 +156,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-              
+
               }}
             >
               <Image source={service4} style={styles.ourImage} />
@@ -190,7 +191,7 @@ export default function ServicePage() {
                 flex: 1,
                 justifyContent: "center", // Centers vertically
                 alignItems: "center",
-               
+
               }}
             >
               <Image source={service5} style={styles.ourImage} />
@@ -203,7 +204,7 @@ export default function ServicePage() {
                 justifyContent: "space-between",
                 padding: 20,
                 left: 20,
-              
+
               }}
             >
               <View>

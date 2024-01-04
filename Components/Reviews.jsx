@@ -19,12 +19,12 @@ const Reviews = () => {
   };
 
   const renderAccordion = (accordionKey, title, subHeading, content) => (
-    <View key={accordionKey} style={{ marginTop: 10, marginHorizontal: "3%" }}>
+    <View key={accordionKey} style={{ marginTop: 20, marginHorizontal: "3%" }}>
       <TouchableOpacity
         onPress={() => toggleAccordion(accordionKey)}
         style={styles.accordionHeader}
       >
-        <View  style={{color:'#E5E5E7'}}>
+        <View>
           <Text style={styles.accordionTitleText}>{title}</Text>
           {subHeading && (
             <Text style={styles.accordionSubheadingText}>{subHeading}</Text>
@@ -45,15 +45,14 @@ const Reviews = () => {
   );
 
   return (
-    <View style={{ marginTop: 0 }}>
-      
-      <Text style={styles.heading}>Reviews</Text>
-      <Text style={styles.subHeading}>Hear it from Our Clients</Text>
-      <Text style={styles.description}>
-        Discover why homeowners love Ultimates Roofing! Read brief testimonials
-        highlighting our excellence in processes, materials, and meticulous
-        cleanups.
-      </Text>
+    <View>
+      {/* <Text style={styles.heading}>Reviews</Text>
+            <Text style={styles.subHeading}>Hear it from Our Clients</Text>
+            <Text style={styles.description}>
+                Discover why homeowners love Ultimates Roofing! Read brief testimonials
+                highlighting our excellence in processes, materials, and meticulous
+                cleanups.
+            </Text> */}
 
       {renderAccordion(
         "accordion1",
@@ -79,6 +78,10 @@ const Reviews = () => {
         "Austin, Texas",
         "Content for Accordion 4"
       )}
+
+      <View style={{ marginTop: 10 }}>
+        <TouchableOpacity><Text style={{ color: '#B22335', fontSize: 18, alignSelf: 'center' }}>View More</Text></TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     letterSpacing: 0.36,
     marginHorizontal: "5%",
-    marginTop: 20,
+    marginTop: 50,
     color: "#181818",
   },
   subHeading: {
@@ -114,7 +117,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 10,
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "#ffffff",
+    borderBottomWidth: 1,
+    borderColor: '#E5E5E7'
   },
   accordionTitleText: {
     fontSize: 15,
@@ -126,7 +131,7 @@ const styles = StyleSheet.create({
   },
   accordionContent: {
     padding: 10,
-    backgroundColor: "#E5E5E7",
+    backgroundColor: "#fff",
   },
 });
 

@@ -15,6 +15,7 @@ import res1 from "../../assets/ServicePageImages/res1.jpeg";
 import res2 from "../../assets/ServicePageImages/res2.jpeg";
 import res3 from "../../assets/ServicePageImages/res3.jpeg";
 import { useNavigation } from "@react-navigation/native";
+import BackNavigation from "../../Components/BackNavigation";
 
 export default function Gutters() {
   let [fontsLoaded] = useFonts({
@@ -25,7 +26,7 @@ export default function Gutters() {
     <SafeAreaView>
       <Header button={true} />
       <ScrollView>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -45,7 +46,8 @@ export default function Gutters() {
            Gutter Systems
           </Text>
           <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("Service")}>Back</Text>
-        </View>
+        </View> */}
+        <BackNavigation title={"Gutter Systems"} />
         <View
           style={{
             flex: 1,

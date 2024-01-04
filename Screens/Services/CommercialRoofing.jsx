@@ -15,10 +15,11 @@ import res1 from "../../assets/ServicePageImages/res1.jpeg";
 import res2 from "../../assets/ServicePageImages/res2.jpeg";
 import res3 from "../../assets/ServicePageImages/res3.jpeg";
 import { useNavigation } from "@react-navigation/native";
+import BackNavigation from "../../Components/BackNavigation";
 
 export default function CommercialRoofing() {
 
- let [fontsLoaded] = useFonts({
+  let [fontsLoaded] = useFonts({
     Hauora: HauoraRegular,
   });
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ export default function CommercialRoofing() {
     <SafeAreaView>
       <Header button={true} />
       <ScrollView>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -46,7 +47,8 @@ export default function CommercialRoofing() {
             Commercial Roofing
           </Text>
           <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("Service")}>Back</Text>
-        </View>
+        </View> */}
+        <BackNavigation title={"Commercial Roofing"} />
         <View
           style={{
             flex: 1,
