@@ -3,7 +3,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "@expo/vector-icons/Ionicons";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import InstantQuote from "../Screens/InstantQuote";
 import ServicePage from "../Screens/ServicePage";
@@ -14,13 +14,13 @@ import CommercialRoofing from "../Screens/Services/CommercialRoofing";
 import SidingInstallation from "../Screens/Services/SidingInstallation";
 import Gutters from "../Screens/Services/Gutters";
 import Windows from "../Screens/Services/Windows";
-import FreeEstimate from "../Screens/FreeEstimate";
+
 import ContactPage from "../Screens/ContactPage";
 
 import homeIconActive from "../assets/homeIconActive.png";
 import homeIconInactive from "../assets/homeIconInactive.png";
 import serviceIconActive from "../assets/servicesIconActive.png";
-import serviceIconInactive from "../assets/servicesIconInactive.png"
+import serviceIconInactive from "../assets/servicesIconInactive.png";
 import contactIconActive from "../assets/contactIconActive.png";
 import contactIconInactive from "../assets/contactIconInactive.png";
 import aboutActive from "../assets/aboutActive.png";
@@ -29,24 +29,46 @@ import reviewActive from "../assets/reviewActive.png";
 import reviewInactive from "../assets/reviewInactive.png";
 
 import { View } from "react-native";
-import ReviewPage from "../Screens/ReviewPage";
+
+import ReviewsPage from "../Screens/ReviewsPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const BottomIcon = (props) => {
-  return (<>
-    <View style={{ alignItems: 'center', width: '100%' }}>
-      <Image source={props.iconImage} style={{ width: 25, height: 25, resizeMode: 'center', }} />
-      <Text style={{ fontSize: 15, fontWeight: 500, color: props.focuse ? 'black' : '#6e6e6e' }}>
-        {props.iconName}
-      </Text>
-      {props.focuse ? (
-        <View style={{ width: 25, borderTopWidth: 3, borderColor: '#B22335', alignSelf: 'center' }} />
-      ) : (<View style={{ width: 25, borderTopWidth: 3, borderColor: '#ffffff' }} />)
-      }
-    </View>
-  </>);
+  return (
+    <>
+      <View style={{ alignItems: "center", width: "100%" }}>
+        <Image
+          source={props.iconImage}
+          style={{ width: 25, height: 25, resizeMode: "center" }}
+        />
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: 500,
+            color: props.focuse ? "black" : "#6e6e6e",
+          }}
+        >
+          {props.iconName}
+        </Text>
+        {props.focuse ? (
+          <View
+            style={{
+              width: 25,
+              borderTopWidth: 3,
+              borderColor: "#B22335",
+              alignSelf: "center",
+            }}
+          />
+        ) : (
+          <View
+            style={{ width: 25, borderTopWidth: 3, borderColor: "#ffffff" }}
+          />
+        )}
+      </View>
+    </>
+  );
 };
 
 const TabNavigator = () => {
@@ -65,17 +87,19 @@ const TabNavigator = () => {
           tabBarInactiveTintColor: "#6d6d6d",
           //tabBarLabelStyle: { fontSize: 15, fontWeight: 400, padding: "2%", position: 'relative', top: -15, borderBottomWidth: 3, borderColor: "#ffffff" },
           tabBarItemStyle: { borderRadius: 100, borderWidth: 0 },
-          tabBarStyle: { height: 80, },
-
+          tabBarStyle: { height: 80 },
         }}
       >
         <Tab.Screen
           name="home"
           options={{
             tabBarIcon: ({ focused }) => (
-
               // <Icon name="home" size={focused ? 35 : 25} color={focused ? "red" : "black"} />
-              <BottomIcon iconName="Home" iconImage={focused ? homeIconActive : homeIconInactive} focuse={focused} />
+              <BottomIcon
+                iconName="Home"
+                iconImage={focused ? homeIconActive : homeIconInactive}
+                focuse={focused}
+              />
             ),
             // tabBarLabelStyle: { fontSize: 15, fontWeight: 400, padding: "2%", position: 'relative', top: -15, borderBottomWidth: 3, borderColor: "#ff0000" },
           }}
@@ -92,21 +116,7 @@ const TabNavigator = () => {
                   // ),
                 }}
               />
-              <Stack.Screen
-                name="quote"
-                component={InstantQuote}
-                options={{
-                  headerShown: false,
-                  // headerLeft: () => (
-                  //   <TouchableOpacity
-                  //     style={styles.backButton}
-                  //     onPress={() => navigation.navigate("HomeScreen")}
-                  //   >
-                  //     <Icon name="arrow-back" size={25} color="black" />
-                  //   </TouchableOpacity>
-                  // ),
-                }}
-              />
+
               <Stack.Screen
                 name="Residential"
                 component={ResidentialRoofing}
@@ -132,11 +142,7 @@ const TabNavigator = () => {
                 component={Windows}
                 options={{ headerShown: false }}
               />
-              <Stack.Screen
-                name="FreeEstimate"
-                component={FreeEstimate}
-                options={{ headerShown: false }}
-              />
+            
             </Stack.Navigator>
           )}
         </Tab.Screen>
@@ -144,12 +150,12 @@ const TabNavigator = () => {
           name="Services"
           options={{
             tabBarIcon: ({ focused }) => (
-
-              // <View>
-              //     <Icon name="briefcase-sharp" size={focused ? 35 : 25} style={{ color: focused ? "red" : "black" }} />
-
-              // </View>
-              <BottomIcon iconName="Services" iconImage={focused ? serviceIconActive : serviceIconInactive} focuse={focused} />
+             
+              <BottomIcon
+                iconName="Services"
+                iconImage={focused ? serviceIconActive : serviceIconInactive}
+                focuse={focused}
+              />
             ),
           }}
         >
@@ -161,15 +167,15 @@ const TabNavigator = () => {
                 options={{
                   headerShown: false,
                   tabBarIcon: () => (
-                    <Icon name="home-sharp" size={focused ? 35 : 25} color="black" />
+                    <Icon
+                      name="home-sharp"
+                      size={focused ? 35 : 25}
+                      color="black"
+                    />
                   ),
                 }}
               />
-              <Stack.Screen
-                name="quote"
-                component={InstantQuote}
-                options={{ headerShown: false }}
-              />
+
               <Stack.Screen
                 name="Residential"
                 component={ResidentialRoofing}
@@ -195,11 +201,7 @@ const TabNavigator = () => {
                 component={Windows}
                 options={{ headerShown: false }}
               />
-              <Stack.Screen
-                name="FreeEstimate"
-                component={FreeEstimate}
-                options={{ headerShown: false }}
-              />
+             
             </Stack.Navigator>
           )}
         </Tab.Screen>
@@ -207,8 +209,11 @@ const TabNavigator = () => {
           name="About"
           options={{
             tabBarIcon: ({ focused }) => (
-              <BottomIcon iconName="About" iconImage={focused ? aboutActive : aboutInactive} focuse={focused} />
-
+              <BottomIcon
+                iconName="About"
+                iconImage={focused ? aboutActive : aboutInactive}
+                focuse={focused}
+              />
             ),
           }}
         >
@@ -220,15 +225,13 @@ const TabNavigator = () => {
                 options={{
                   headerShown: false,
                   tabBarIcon: () => (
-                    <Icon name="home-sharp" size={focused ? 35 : 25} color="black" />
-
+                    <Icon
+                      name="home-sharp"
+                      size={focused ? 35 : 25}
+                      color="black"
+                    />
                   ),
                 }}
-              />
-              <Stack.Screen
-                name="quote"
-                component={InstantQuote}
-                options={{ headerShown: false }}
               />
             </Stack.Navigator>
           )}
@@ -238,8 +241,11 @@ const TabNavigator = () => {
           name="Review"
           options={{
             tabBarIcon: ({ focused }) => (
-              <BottomIcon iconName="Review" iconImage={focused ? reviewActive : reviewInactive} focuse={focused} />
-
+              <BottomIcon
+                iconName="Review"
+                iconImage={focused ? reviewActive : reviewInactive}
+                focuse={focused}
+              />
             ),
           }}
         >
@@ -247,12 +253,15 @@ const TabNavigator = () => {
             <Stack.Navigator>
               <Stack.Screen
                 name="ReviewPage"
-                component={ReviewPage}
+                component={ReviewsPage}
                 options={{
                   headerShown: false,
                   tabBarIcon: () => (
-                    <Icon name="home-sharp" size={focused ? 35 : 25} color="black" />
-
+                    <Icon
+                      name="home-sharp"
+                      size={focused ? 35 : 25}
+                      color="black"
+                    />
                   ),
                 }}
               />
@@ -264,12 +273,12 @@ const TabNavigator = () => {
           name="Contact"
           options={{
             tabBarIcon: ({ focused }) => (
-              // <MaterialCommunityIcons
-              //     name="contacts"
-              //     size={focused ? 35 : 25}
-              //     style={{ color: focused ? "red" : "black" }}
-              // />
-              <BottomIcon iconName="Contact" iconImage={focused ? contactIconActive : contactIconInactive} focuse={focused} />
+           
+              <BottomIcon
+                iconName="Contact"
+                iconImage={focused ? contactIconActive : contactIconInactive}
+                focuse={focused}
+              />
             ),
           }}
         >
@@ -289,49 +298,9 @@ const TabNavigator = () => {
                   ),
                 }}
               />
-              <Stack.Screen
-                name="quote"
-                component={InstantQuote}
-                options={{ headerShown: false }}
-              />
             </Stack.Navigator>
           )}
         </Tab.Screen>
-
-        {/* <Tab.Screen
-                name="FAQ's"
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        // <Icon name="information-circle" size={focused ? 35 : 25} style={{ color: focused ? "red" : "black" }} />
-                        <BottomIcon iconName="Profile" iconImage={focused ? profileIconActive : profileIconInactive} focuse={focused} />
-                    ),
-
-                }}
-            >
-                {() => (
-                    <Stack.Navigator>
-                        <Stack.Screen
-                            name="Infos"
-                            component={FAQ}
-                            options={{
-                                headerShown: false,
-                                tabBarIcon: () => (
-                                    <Icon
-                                        name="information-circle-sharp"
-                                        size={25}
-                                        color="black"
-                                    />
-                                ),
-                            }}
-                        />
-                        <Stack.Screen
-                            name="quote"
-                            component={InstantQuote}
-                            options={{ headerShown: false }}
-                        />
-                    </Stack.Navigator>
-                )}
-            </Tab.Screen> */}
       </Tab.Navigator>
     </>
   );

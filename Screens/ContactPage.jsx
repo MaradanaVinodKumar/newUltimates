@@ -8,12 +8,13 @@ import {
   Linking,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+
 import Icon from "@expo/vector-icons/Ionicons";
 
 import FormContact from "../Components/FormContact";
 import Header from "../Screens/Header";
 import BackNavigation from "../Components/BackNavigation";
+import AssistButton from "../Components/AssistButton";
 
 const ContactCard = ({ icon, title, subtitle, onPress }) => (
   <TouchableOpacity onPress={onPress}>
@@ -36,60 +37,25 @@ const handleCardClick = () => {
 };
 
 const ContactPage = () => {
-  const navigation = useNavigation();
-
   return (
     <SafeAreaView>
       <Header button={true} />
-
+      <AssistButton />
       <ScrollView>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: "5%",
-            marginTop: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: "#181818",
-              fontSize: 20,
-              fontWeight: "normal",
-              letterSpacing: 0.4,
-              fontFamily: "Hauora",
-            }}
-          >
-            Contact Us
-          </Text>
-          <Text
-            style={{
-              color: "#181818",
-              fontFamily: "Hauora",
-              fontSize: 14,
-              marginTop: 6,
-              fontWeight: "400",
-            }}
-            onPress={() => navigation.navigate("home")}
-          >
-            Back
-          </Text>
-        </View> */}
-
         <BackNavigation title={"Contact Us"} />
         <View style={styles.contactContainer}>
           <ContactCard
-            icon="ios-call"
+            icon="call-outline"
             title="614-602-7980"
             onPress={handleCardClick}
           />
           <ContactCard
-            icon="ios-mail"
-            title="Thossan247@gmail.com"
-            subtitle="Rockakash100@gmail.com"
+            icon="mail-outline"
+            title="admin - hrroofs@ultimatesolutionsit.com"
+            subtitle="sales - roofs@ultimatesolutionsit.com"
           />
           <ContactCard
-            icon="ios-location"
+            icon="location"
             title="Ultimates Roofing LLC,"
             subtitle="Columbus, Ohio"
           />

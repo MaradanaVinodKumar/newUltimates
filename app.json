@@ -1,14 +1,13 @@
 {
   "expo": {
     "name": "ultimates-roofing-solution-application",
-    "slug": "ultimates-roofing-solution-application",
+    "slug": "ultimates-roofing-solution-application-new",
     "privacy": "public",
     "description": "This is a complete solution for your roofing",
     "version": "1.0.0",
-    "orientation": "portrait", 
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -29,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "2318af7b-4f1f-4c0a-9072-c859c8c060c5"
+        "projectId": "5c3404f9-b8c9-4418-b63e-bc93a1a80a83"
       }
     },
     "runtimeVersion": {
@@ -37,6 +36,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/2318af7b-4f1f-4c0a-9072-c859c8c060c5"
-    }
+    },
+    "owner": "vinodkumarmaradana2514"
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -7,21 +7,29 @@ import {
   SafeAreaView,
   Text,
 } from "react-native";
-import { useFonts } from "expo-font";
+// import { useFonts } from "expo-font";
 import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
+import * as Font from 'expo-font';
 
-const Trust = () => {
-  let [fontsLoaded] = useFonts({
-    Hauora: HauoraRegular,
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Hauora': HauoraRegular,
+    // You can add more fonts here if needed
   });
+}
+const Trust = () => {
+  useEffect(() => {
+    loadFonts();
+  }, []);
 
   const images = [
-    require("../assets/1.png"),
-    require("../assets/2.png"),
-    require("../assets/3.png"),
-    require("../assets/4.png"),
-    require("../assets/5.png"),
-    require("../assets/6.png"),
+    require("../assets/1.webp"),
+    require("../assets/2.webp"),
+    require("../assets/3.webp"),
+    require("../assets/4.webp"),
+    require("../assets/5.webp"),
+    require("../assets/6.webp"),
   ];
 
   const screenWidth = Dimensions.get("window").width;
@@ -29,7 +37,7 @@ const Trust = () => {
   const itemWidth = (screenWidth - 20) / itemsPerRow - 40; // Adjusted for padding and increased gap
 
   return (
-    <SafeAreaView style={{ marginTop: 40, marginBottom: 100 }}>
+    <SafeAreaView style={{ marginTop: 40, marginBottom: 50 }}>
       <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
         <Text style={{ fontSize: 21, fontWeight: '600', letterSpacing: 0.32, fontFamily: 'Hauora', marginBottom: 10 }}>
           Trusted By

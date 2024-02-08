@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import Collapsible from "react-native-collapsible";
 import { Ionicons } from "@expo/vector-icons";
+import * as Font from 'expo-font';
+import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
+
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Hauora': HauoraRegular,
+    // You can add more fonts here if needed
+  });
+}
 
 const Reviews = () => {
+
+
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
+
   const [accordionStates, setAccordionStates] = useState({
     accordion1: false,
     accordion2: false,
@@ -46,13 +63,7 @@ const Reviews = () => {
 
   return (
     <View>
-      {/* <Text style={styles.heading}>Reviews</Text>
-            <Text style={styles.subHeading}>Hear it from Our Clients</Text>
-            <Text style={styles.description}>
-                Discover why homeowners love Ultimates Roofing! Read brief testimonials
-                highlighting our excellence in processes, materials, and meticulous
-                cleanups.
-            </Text> */}
+
 
       {renderAccordion(
         "accordion1",

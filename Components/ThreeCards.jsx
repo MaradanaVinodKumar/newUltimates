@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontAwesome } from '@expo/vector-icons'; 
-import { useFonts } from "expo-font";
+import { FontAwesome } from '@expo/vector-icons';
+// import { useFonts } from "expo-font";
 import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
+import * as Font from 'expo-font';
+
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Hauora': HauoraRegular,
+    // You can add more fonts here if needed
+  });
+}
+
 
 const ThreeCards = () => {
-  let [fontsLoaded] = useFonts({
-    Hauora: HauoraRegular,
-  });
+  // let [fontsLoaded] = useFonts({
+  //   Hauora: HauoraRegular,
+  // });
+
+  useEffect(() => {
+    loadFonts();
+  }, []);
 
   const data = [
     {

@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  SafeAreaView,
+  SafeAreaView, Platform, Alert
 } from "react-native";
-import { useFonts } from "expo-font";
-import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
+// import { useFonts } from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../Screens/Header";
 import { useNavigation } from "@react-navigation/native";
@@ -16,30 +15,68 @@ import { SliderBox } from "react-native-image-slider-box";
 import Cards from "../Components/Cards";
 import Trust from "../Components/Trust";
 import ButtonCarousel from "../Components/ButtonCarousel";
+import AssistButton from "../Components/AssistButton";
+import * as Font from 'expo-font';
+import HauoraRegular from "../assets/Fonts/Hauora-Regular.ttf";
+
+
+// async function loadFonts() {
+//   await Font.loadAsync({
+//     'Hauora': HauoraRegular,
+//     // You can add more fonts here if needed
+//   });
+// }
+
+
+
 
 export default function HomePage() {
+
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+
+  useEffect(() => {
+    async function loadFonts() {
+      try {
+        await Font.loadAsync({
+          'Hauora': HauoraRegular,
+        });
+
+        setFontLoaded(true);
+      } catch (error) {
+        // console.error('Error loading fonts:', error);
+        Alert.alert(error);
+      }
+    }
+    loadFonts();
+  }, []);
+
   const navigation = useNavigation();
 
-  let [fontsLoaded] = useFonts({
-    Hauora: HauoraRegular,
-  });
+  // let [fontsLoaded] = useFonts({
+  //   Hauora: HauoraRegular,
+  // });
 
   const images = [
-    require("../assets/c1.jpeg"),
-    require("../assets/c2.jpeg"),
-    require("../assets/c3.jpeg"),
+    require("../assets/c1.webp"),
+    require("../assets/c2.webp"),
+    require("../assets/c3.webp"),
   ];
+
+  if (!fontLoaded) {
+    return null; // or a loading indicator
+  }
 
   return (
     <SafeAreaView>
       <Header button={true} />
-
+      <AssistButton />
       <ScrollView style={{ height: "auto" }}>
         <SafeAreaView>
           <View>
             <SliderBox
               images={images}
-              sliderBoxHeight={200}
+              SliderBoxHeight={200}
               SliderBoxWidth={"100%"}
               dotColor="white"
               inactiveDotColor="grey"
@@ -58,7 +95,7 @@ export default function HomePage() {
                 <TouchableOpacity
                   style={styles.GYFEButton}
                   onPress={() => {
-                    navigation.navigate("FreeEstimate");
+                    navigation.navigate("Contact");
                   }}
                 >
                   <View>

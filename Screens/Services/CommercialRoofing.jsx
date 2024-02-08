@@ -6,48 +6,38 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { ScrollView } from "react-native";
-import { useFonts } from "expo-font";
+// import { useFonts } from "expo-font";
 import HauoraRegular from "../../assets/Fonts/Hauora-Regular.ttf";
 import Header from "../Header";
-import res1 from "../../assets/ServicePageImages/res1.jpeg";
-import res2 from "../../assets/ServicePageImages/res2.jpeg";
-import res3 from "../../assets/ServicePageImages/res3.jpeg";
+import Trust from "../../Components/Trust";
+import com1 from "../../assets/ServicePageImages/co1.png";
+import com2 from "../../assets/ServicePageImages/co2.png";
+import com3 from "../../assets/ServicePageImages/co3.png";
 import { useNavigation } from "@react-navigation/native";
 import BackNavigation from "../../Components/BackNavigation";
+import * as Font from 'expo-font';
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Hauora': HauoraRegular,
+    // You can add more fonts here if needed
+  });
+}
 
 export default function CommercialRoofing() {
 
-  let [fontsLoaded] = useFonts({
-    Hauora: HauoraRegular,
-  });
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
+
   const navigation = useNavigation();
   return (
     <SafeAreaView>
       <Header button={true} />
       <ScrollView>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: "5%",
-            marginTop: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: "#181818",
-              fontSize: 20,
-              fontWeight: "normal",
-              letterSpacing: 0.4,
-              fontFamily: "Hauora",
-            }}
-          >
-            Commercial Roofing
-          </Text>
-          <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("Service")}>Back</Text>
-        </View> */}
         <BackNavigation title={"Commercial Roofing"} />
         <View
           style={{
@@ -59,7 +49,7 @@ export default function CommercialRoofing() {
           }}
         >
           <Image
-            source={res1}
+            source={com1}
             style={{ height: 180, width: "100%", resizeMode: "cover" }}
           />
           <Text
@@ -71,8 +61,10 @@ export default function CommercialRoofing() {
               lineHeight: 20,
             }}
           >
-            Strengthen home protection with durable, appealing residential
-            roofing solutions.
+            Explore top-tier commercial roofing excellence with Ultimates
+            Roofing. Tailored to your business's unique needs, our services
+            encompass precision installations and long-term maintenance,
+            surpassing industry standards.
           </Text>
         </View>
         <View style={{ flex: 1, justifyContent: "flex-start" }}>
@@ -83,11 +75,11 @@ export default function CommercialRoofing() {
               paddingHorizontal: 8,
               marginTop: 15,
               marginHorizontal: "5%",
-              width: "38%",
+              width: "43%",
               justifyContent: "center",
               alignItems: "center",
             }}
-            onPress={() => navigation.navigate("FreeEstimate")}
+            onPress={() => navigation.navigate("Contact")}
           >
             <Text
               style={{
@@ -111,7 +103,7 @@ export default function CommercialRoofing() {
               letterSpacing: 0.36,
             }}
           >
-            Your Style with Premium Shingles
+            Flat and Metal Roof Options
           </Text>
           <Text
             style={{
@@ -123,41 +115,39 @@ export default function CommercialRoofing() {
               lineHeight: 23,
             }}
           >
-            Discover roofing excellence with our premium shingles—marrying
-            durability and aesthetics. Redefine your roof with architectural
-            sophistication. Each shingle reflects our commitment to quality,
-            ensuring your home stands strong and stylish. Find the perfect blend
-            of functionality and elegance.
+            Ultimates Roofing takes pride in presenting our customers with
+            roofing products that have been honored with the prestigious ENERGY
+            STAR label. Today, our Benchmark®, Rapid Roof III®, and PUMA® roof
+            coatings continue to lead the industry in technology, performance,
+            and environmental responsibility, setting the standard for
+            excellence.
           </Text>
-          <Text style={styles.listItem}>
-            • Crafted from a 100% recyclable blend of natural limestone and
-            virgin resins.
-          </Text>
-          <Text style={styles.listItem}>
-            • Experience the true beauty of authentic slate with its natural
-            textures and edges.
-          </Text>
-        </View>
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <Image
-            source={res2}
-            style={{ width: 291, height: 233, resizeMode: "cover" }}
-          />
-        </View>
-        <View style={{ marginTop: 15 }}>
           <Text
             style={{
               fontFamily: "Hauora",
               fontSize: 18,
               fontWeight: "500",
               letterSpacing: 0.36,
-              marginHorizontal: "5%",
+              marginTop: 18,
             }}
           >
-            Your Roofing Experience with Owens Corning Products
+            1. Conklin Membrane Coating System
           </Text>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 18,
+          }}
+        >
+          <Image
+            source={com2}
+            style={{ width: 312, height: 160, resizeMode: "cover" }}
+          />
+        </View>
+        <View style={{ marginTop: 15 }}>
           <Text
             style={{
               marginTop: 5,
@@ -169,27 +159,180 @@ export default function CommercialRoofing() {
               lineHeight: 20,
             }}
           >
-            Owens Corning, a leader for over 75 years in building materials,
-            ensures your new roof enhances and safeguards your home. Discover
-            the enduring performance and beauty of Oakridge® Shingles – 'The
-            Right Choice®.' Explore exclusive colors and vibrancy with Owens
-            Corning TruDefinition® Duration® Designer Colors Collection
-            Shingles.
+            Conklin's Membrane Coating system is the solution for weathered
+            membranes, addressing issues like cracks and reduced efficiency.
+            Pioneering acrylic roof coatings since 1977, our commitment to
+            innovation now extends to a comprehensive waterproofing system for
+            membranes. As TPO and other membranes weather, Conklin's elastomeric
+            coatings provide a cost-effective solution, repairing and preserving
+            approved membranes, enhancing energy savings, and ensuring the
+            longevity of roofing systems.
           </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 14,
+              fontWeight: "500",
+              letterSpacing: 0.28,
+              marginTop: 10,
+              marginHorizontal: "5%",
+            }}
+          >
+            Process
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 14,
+              fontWeight: "500",
+              letterSpacing: 0.28,
+              marginTop: 10,
+              marginHorizontal: "5%",
+            }}
+          >
+            Step 1 - Inspection and Preparation{" "}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 14,
+              fontWeight: "500",
+              letterSpacing: 0.28,
+              marginTop: 10,
+              marginHorizontal: "5%",
+            }}
+          >
+            Step 2 - Primer Application{" "}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 14,
+              fontWeight: "500",
+              letterSpacing: 0.28,
+              marginTop: 10,
+              marginHorizontal: "5%",
+            }}
+          >
+            Step 3 - Membrane Coating Application
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 14,
+              fontWeight: "500",
+              letterSpacing: 0.28,
+              marginTop: 10,
+              marginHorizontal: "5%",
+            }}
+          >
+            Step 4 - Quality Inspection and Finalization{" "}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Hauora",
+              fontSize: 18,
+              fontWeight: "500",
+              letterSpacing: 0.36,
+              marginTop: 18,
+              marginHorizontal: "5%",
+            }}
+          >
+            2. Conklin Metal Roof Restoration System
+          </Text>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 18,
+            }}
+          >
+            <Image
+              source={com3}
+              style={{ width: 312, height: 160, resizeMode: "cover" }}
+            />
+          </View>
         </View>
-        <View
+        <Text
           style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 15,
+            marginTop: 5,
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "400",
+            letterSpacing: 0.28,
+            marginHorizontal: "5%",
+            lineHeight: 20,
           }}
         >
-          <Image
-            source={res3}
-            style={{ resizeMode: "cover", height: 178, width: 311 }}
-          />
-        </View>
+          Introducing a specialized waterproofing system for metal roofs,
+          designed to prevent rust, eliminate leaks, and provide an
+          energy-efficient, durable finish. Our approach reinforces seams with
+          fabric embedded into our acrylic elastomeric roof coating, enhancing
+          strength. Conklin's industry-leading roof coatings preserve entire
+          roof surfaces, offering a cost-effective solution for existing metal
+          roofs without the need for costly repairs.
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "500",
+            letterSpacing: 0.28,
+            marginTop: 10,
+            marginHorizontal: "5%",
+          }}
+        >
+          Process
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "500",
+            letterSpacing: 0.28,
+            marginTop: 10,
+            marginHorizontal: "5%",
+          }}
+        >
+          Step 1 - Inspection and Preparation{" "}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "500",
+            letterSpacing: 0.28,
+            marginTop: 10,
+            marginHorizontal: "5%",
+          }}
+        >
+          Step 2 - Primer Application{" "}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "500",
+            letterSpacing: 0.28,
+            marginTop: 10,
+            marginHorizontal: "5%",
+          }}
+        >
+          Step 3 - Membrane Coating Application
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Hauora",
+            fontSize: 14,
+            fontWeight: "500",
+            letterSpacing: 0.28,
+            marginTop: 10,
+            marginHorizontal: "5%",
+          }}
+        >
+          Step 4 - Quality Inspection and Finalization{" "}
+        </Text>
         <View
           style={{
             flex: 1,
@@ -198,13 +341,13 @@ export default function CommercialRoofing() {
             marginBottom: 89,
           }}
         >
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               backgroundColor: "#B22335",
               paddingVertical: 12,
               paddingHorizontal: 8,
               marginHorizontal: "5%",
-              width: "38%",
+              width: "45%",
               marginBottom: 12,
               marginTop: 12,
               marginLeft: 14,
@@ -225,13 +368,13 @@ export default function CommercialRoofing() {
             >
               Get Your Free Estimate
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <Trust />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   roof: {

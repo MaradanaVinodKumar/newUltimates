@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -5,47 +6,72 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  Modal,
+  ScrollView,
+  Linking,
+  ActivityIndicator,
 } from "react-native";
-import React from "react";
-import { ScrollView } from "react-native";
+
+import { WebView } from "react-native-webview";
+
 import { useFonts } from "expo-font";
 import HauoraRegular from "../../assets/Fonts/Hauora-Regular.ttf";
 import Header from "../Header";
+// const owken = require("../../assets/Pdf/owken.pdf");
+
 import res1 from "../../assets/ServicePageImages/res1.jpeg";
 import res2 from "../../assets/ServicePageImages/res2.jpeg";
-import res3 from "../../assets/ServicePageImages/res3.jpeg";
+import sh1 from "../../assets/ServicePageImages/sh1.png";
+import sh2 from "../../assets/ServicePageImages/sh2.png";
+import sh3 from "../../assets/ServicePageImages/sh3.png";
+import sh4 from "../../assets/ServicePageImages/sh4.png";
+import sh5 from "../../assets/ServicePageImages/sh5.png";
+import sh6 from "../../assets/ServicePageImages/sh6.png";
 import { useNavigation } from "@react-navigation/native";
 import BackNavigation from "../../Components/BackNavigation";
-export default function ResidentialRoofing() {
-  let [fontsLoaded] = useFonts({
-    Hauora: HauoraRegular,
+import Trust from "../../Components/Trust";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as Font from 'expo-font';
+
+
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'Hauora': HauoraRegular,
+    // You can add more fonts here if needed
   });
+}
+
+
+
+export default function ResidentialRoofing() {
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
+  const pdfUrl =
+    "https://ultimatesroofing.com/static/media/Owens%20Corning%20Oakridge.d85cef2daac47536f7a8.pdf?v=1408107132000";
   const navigation = useNavigation();
+  const [showPdf, setShowPdf] = useState(false);
+
+  const togglePdf = () => {
+    setShowPdf(!showPdf);
+  };
+
+  const openPdfViewer = () => {
+    togglePdf();
+  };
+
+  const handleLinkPress = () => {
+    Linking.openURL(
+      "https://www.owenscorning.com/en-us/roofing/duration-series-shingles"
+    );
+  };
+
   return (
     <SafeAreaView>
       <Header button={true} />
       <ScrollView>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: "5%",
-            marginTop: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: "#181818",
-              fontSize: 20,
-              fontWeight: "normal",
-              letterSpacing: 0.4,
-              fontFamily: "Hauora",
-            }}
-          >
-            Residential Roofing
-          </Text>
-          <Text style={{ color: "#181818",fontFamily:'Hauora',fontSize:14,marginTop:6,fontWeight:'400' }} onPress={() => navigation.navigate("Service")} >Back</Text>
-        </View> */}
         <BackNavigation title={"Residential Roofing"} />
         <View
           style={{
@@ -81,11 +107,11 @@ export default function ResidentialRoofing() {
               paddingHorizontal: 8,
               marginTop: 15,
               marginHorizontal: "5%",
-              width: "38%",
+              width: "43%",
               justifyContent: "center",
               alignItems: "center",
             }}
-            onPress={() => navigation.navigate("FreeEstimate")}
+            onPress={() => navigation.navigate("Contact")}
           >
             <Text
               style={{
@@ -109,7 +135,7 @@ export default function ResidentialRoofing() {
               letterSpacing: 0.36,
             }}
           >
-            Your Style with Premium Shingles
+            Your Style With Our Premium Shingles & Tiles
           </Text>
           <Text
             style={{
@@ -121,11 +147,11 @@ export default function ResidentialRoofing() {
               lineHeight: 23,
             }}
           >
-            Discover roofing excellence with our premium shingles—marrying
-            durability and aesthetics. Redefine your roof with architectural
-            sophistication. Each shingle reflects our commitment to quality,
-            ensuring your home stands strong and stylish. Find the perfect blend
-            of functionality and elegance.
+            Discover roofing excellence with our premium shingles and tiles
+            marrying durability and aesthetics. Redefine your roof with
+            architectural sophistication. Each shingle and tiles reflects our
+            commitment to quality, ensuring your home stands strong and stylish.
+            Find the perfect blend of functionality and elegance.
           </Text>
           <Text style={styles.listItem}>
             • Crafted from a 100% recyclable blend of natural limestone and
@@ -177,41 +203,85 @@ export default function ResidentialRoofing() {
         </View>
         <View
           style={{
+            marginTop: 15,
+            flexDirection: "column",
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 15,
           }}
         >
-          <Image
-            source={res3}
-            style={{ resizeMode: "cover", height: 178, width: 311 }}
-          />
+          {/* First Row */}
+          <View style={{ flexDirection: "row", marginBottom: 10 }}>
+            <Image
+              source={sh1}
+              style={{
+                resizeMode: "cover",
+                height: 100,
+                width: 160,
+                marginRight: 10,
+              }}
+            />
+            <Image
+              source={sh2}
+              style={{ resizeMode: "cover", height: 100, width: 160 }}
+            />
+          </View>
+          <View style={{ flexDirection: "row", marginBottom: 10 }}>
+            <Image
+              source={sh3}
+              style={{
+                resizeMode: "cover",
+                height: 100,
+                width: 160,
+                marginRight: 10,
+              }}
+            />
+            <Image
+              source={sh4}
+              style={{ resizeMode: "cover", height: 100, width: 160 }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              marginBottom: 10,
+            }}
+          >
+            <Image
+              source={sh5}
+              style={{
+                resizeMode: "cover",
+                height: 100,
+                width: 160,
+                marginRight: 10,
+              }}
+            />
+            <Image
+              source={sh6}
+              style={{ resizeMode: "cover", height: 100, width: 160 }}
+            />
+          </View>
         </View>
+
         <View
           style={{
             flex: 1,
             justifyContent: "flex-start",
             marginTop: 24,
             marginBottom: 89,
-            marginLeft: 25
+            marginLeft: 25,
           }}
         >
           <TouchableOpacity
             style={{
               backgroundColor: "#B22335",
               paddingVertical: 12,
-              paddingHorizontal: 8,
-              marginHorizontal: "5%",
-              width: "38%",
+              width: "35%",
               marginBottom: 12,
-              marginTop: 12,
-              marginLeft: 14,
-              marginRight: 14,
               justifyContent: "center",
               alignItems: "center",
             }}
-            onPress={() => navigation.navigate("FreeEstimate")}
+            onPress={openPdfViewer}
           >
             <Text
               style={{
@@ -222,9 +292,184 @@ export default function ResidentialRoofing() {
                 letterSpacing: 0.24,
               }}
             >
-              Get Your Free Estimate
+              Learn More
             </Text>
           </TouchableOpacity>
+
+          <Modal visible={showPdf} onRequestClose={togglePdf}>
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 10,
+                  zIndex: 1,
+                }}
+                onPress={togglePdf}
+              >
+                <MaterialCommunityIcons
+                  name="close-circle-outline"
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
+
+              {/* PDF Viewer */}
+              <WebView
+                source={{
+                  uri: `https://drive.google.com/viewerng/viewer?embedded=true&url=${pdfUrl}`,
+                }}
+                javaScriptEnabled={true}
+                scrollEnabled={true}
+                domStorageEnabled={true}
+                startInLoadingState={true}
+                renderLoading={() => (
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <ActivityIndicator></ActivityIndicator>
+                    <Text>Loading PDF...</Text>
+                  </View>
+                )}
+              />
+            </View>
+          </Modal>
+
+          <View style={{ marginTop: 15 }}>
+            <Text
+              style={{
+                fontFamily: "Hauora",
+                fontSize: 18,
+                fontWeight: "500",
+                letterSpacing: 0.36,
+              }}
+            >
+              Duration® Series Shingles by Owens Corning
+            </Text>
+            <Text
+              style={{
+                marginTop: 5,
+                fontFamily: "Hauora",
+                fontSize: 14,
+                fontWeight: "400",
+                letterSpacing: 0.28,
+                lineHeight: 20,
+              }}
+            >
+              The Duration® Series Shingles stand out among architectural
+              shingles, thanks to our patented SureNail® Technology, a
+              groundbreaking innovation in shingle design that sets them apart
+              from the competition.
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              • Innovative Design
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              {" "}
+              • Strong Adhesion
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              {" "}
+              • Enhanced Grip
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              {" "}
+              • SureNail® Technology
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              {" "}
+              • Triple-Layer Reinforcement®
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: "400",
+                lineHeight: 21,
+                letterSpacing: 0.28,
+                marginTop: 6,
+                fontFamily: "Hauora",
+              }}
+            >
+              {" "}
+              • High Wind Resistance
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#B22335",
+              paddingVertical: 12,
+              paddingHorizontal: 8,
+              width: "35%",
+              marginBottom: 12,
+              marginTop: 25,
+              marginRight: 14,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onPress={handleLinkPress}
+          >
+            <Text
+              style={{
+                color: "#F9F9F9",
+                fontSize: 12,
+                fontFamily: "Hauora",
+                fontWeight: "400",
+                letterSpacing: 0.24,
+              }}
+            >
+              Learn More
+            </Text>
+          </TouchableOpacity>
+          <Trust />
         </View>
       </ScrollView>
     </SafeAreaView>
